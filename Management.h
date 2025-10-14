@@ -1,0 +1,26 @@
+#ifndef MANAGEMENT_H
+#define MANAGEMENT_H
+#include <QString>
+#include "Student.h"
+
+class Management {
+public:
+    static Student* manageHead;
+    void insertStudent(int studentID, QString name, QString major, QString year);
+    void deleteStudent(int studentID);
+
+    void addCourse(Student* stn, QString courseName);
+    void deleteCourse(Student* stn, QString courseName);
+
+    void updateGrade(Student* stn, QString courseName, QString grade);
+
+    bool checkStudentID(int studentID);
+    Student* searchStudentID(int studentID);
+
+    void debugInsertList();
+    void debugCourseList();
+private slots:
+public slots:
+};
+
+#endif // MANAGEMENT_H
