@@ -6,7 +6,9 @@
 class Management {
 public:
     static Student* manageHead;
+
     void insertStudent(int studentID, QString name, QString major, QString year);
+    void insertStudent(int studentID, QString name, QString major, QString year, double GPA);
     void deleteStudent(int studentID);
 
     void addCourse(Student* stn, QString courseName);

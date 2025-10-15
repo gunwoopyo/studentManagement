@@ -1,10 +1,11 @@
 #include "Management.h"
 #include <QDebug>
+
 Student* Management::manageHead = nullptr;
 
 
-void Management::insertStudent(int studentID, QString name, QString major, QString year) {
-    Student* newStudent = new Student(studentID, name, major, year);
+void Management::insertStudent(int studentID, QString name, QString year, QString major) {
+    Student* newStudent = new Student(studentID, name, year, major);
     if (manageHead == nullptr) {
         manageHead = newStudent;
     }
@@ -17,6 +18,23 @@ void Management::insertStudent(int studentID, QString name, QString major, QStri
         newStudent->studentPrev = currentStudent;
     }
 }
+void Management::insertStudent(int studentID, QString name, QString major, QString year, double GPA) {
+    Student* newStudent = new Student(studentID, name, major, year, GPA);
+    if (manageHead == nullptr) {
+        manageHead = newStudent;
+    }
+    else {
+        Student* currentStudent = manageHead;
+        while (currentStudent->studentNext != nullptr) {
+            currentStudent = currentStudent->studentNext;
+        }
+        currentStudent->studentNext = newStudent;
+        newStudent->studentPrev = currentStudent;
+    }
+    newStudent->SetGPA(GPA);
+}
+
+
 void Management::deleteStudent(int studentID){
     Student* currentStudent = manageHead;
     while(currentStudent != nullptr) {
@@ -44,6 +62,8 @@ void Management::deleteStudent(int studentID){
         currentStudent = currentStudent->studentNext;
     }
 }
+
+
 
 
 void Management::addCourse(Student* stn, QString courseName) {
@@ -77,7 +97,6 @@ void Management::addCourse(Student* stn, QString courseName) {
         index++;
     }
 }
-
 void Management::deleteCourse(Student* stn, QString courseName) {
     Course* currentCourse = stn->courseList;
     while(currentCourse != nullptr) {
@@ -106,6 +125,10 @@ void Management::deleteCourse(Student* stn, QString courseName) {
         currentCourse = currentCourse->courseNext;
     }
 }
+
+
+
+
 void Management::updateGrade(Student* stn, QString courseName, QString grade) {
     Course* currentCourse = stn->courseList;
     while(currentCourse != nullptr) {
@@ -145,8 +168,9 @@ void Management::debugInsertList() {
     Student* currentStudent = Management::manageHead;
     qDebug() << "==========================================================================================================";
     while(currentStudent != nullptr) {
-        qDebug()<<"학번"<<currentStudent->getStudentID()<<" 이름"<<currentStudent->getName()<<"학년"<<currentStudent->getYear()<<" 전공"<<currentStudent->getMajor() <<
-            " 노드"<<index  <<   " 이전 주소" << currentStudent->studentPrev <<
+        qDebug()<<"학번"<<currentStudent->getStudentID()<<" 이름"<<currentStudent->getName()<<"학년"<<currentStudent->getYear()
+                 <<" 전공"<<currentStudent->getMajor() << " 평균 학점" << currentStudent->getGPA() <<
+            " 이전 주소" << currentStudent->studentPrev <<
             " 현재 주소 :" << currentStudent <<" 다음주소 :" << currentStudent->studentNext;
 
         currentStudent = currentStudent ->studentNext;

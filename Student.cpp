@@ -1,7 +1,6 @@
 #include <QDebug>
 #include "Management.h"
 
-
 double Student::calculateGPA() {
     double gradeToNumber = 0.0;
     int count = 0;
