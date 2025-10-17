@@ -81,7 +81,7 @@ void Management::addCourse(Student* stn, QString courseName) {
         newCourse->coursePrev = currentCourse;
     }
 
-    qDebug() << "### 과목 추가 주소 디버그 ======================================================================";
+    qDebug() << "####### 과목 추가 주소 디버그 ======================================================================";
     int index = 0;
     Course* currentCourse = stn->courseList;
     if(currentCourse == nullptr) {
@@ -97,6 +97,17 @@ void Management::addCourse(Student* stn, QString courseName) {
         index++;
     }
 }
+void Management::addCourse(Student* stn, QString courseName, QString grade) {
+    Course* currentCourse = stn->courseList;
+    while(currentCourse != nullptr) {
+        if(currentCourse->getCourseName() == courseName){
+            currentCourse->setGrade(grade);
+        }
+        currentCourse = currentCourse->courseNext;
+    }
+}
+
+
 void Management::deleteCourse(Student* stn, QString courseName) {
     Course* currentCourse = stn->courseList;
     while(currentCourse != nullptr) {
@@ -148,7 +159,7 @@ bool Management::checkStudentID(int studentID) {
     }
     return true;
 }
-Student* Management::searchStudentID(int studentID) {
+Student* Management::createObject(int studentID) {
     Student* current = manageHead;
     while (current != nullptr) {
         if(current->getStudentID() == studentID){
@@ -179,7 +190,7 @@ void Management::debugInsertList() {
 }
 
 void Management::debugCourseList() {
-    qDebug() << "### 과목 삭제 주소 디버그 ======================================================================================";
+    qDebug() << "### 과목 주소 디버그 ======================================================================================";
     if(Management::manageHead->courseList == nullptr) {
         qDebug() << "Student courseList is empty";
         return;

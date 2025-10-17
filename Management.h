@@ -12,12 +12,13 @@ public:
     void deleteStudent(int studentID);
 
     void addCourse(Student* stn, QString courseName);
+    void addCourse(Student* stn, QString courseName, QString grade);
     void deleteCourse(Student* stn, QString courseName);
 
     void updateGrade(Student* stn, QString courseName, QString grade);
 
     bool checkStudentID(int studentID);
-    Student* searchStudentID(int studentID);
+    Student* createObject(int studentID);
 
     void debugInsertList();
     void debugCourseList();

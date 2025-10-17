@@ -26,24 +26,43 @@ int main(int argc, char *argv[])
 
 
     Management* manager= new Management();
-    QSqlQuery query("SELECT studentID, name, year, major, GPA FROM student;");
-
-    if (!query.exec()) {
-        qDebug() << "failed:" << query.lastError().text();
+    QSqlQuery studentQuery("SELECT studentID, name, year, major, GPA FROM student;");
+    if (!studentQuery.exec()) {
+        qDebug() << "failed:" << studentQuery.lastError().text();
     } else {
         qDebug() << "successed";
     }
-    while(query.next()) {
-        int studentID = query.value("studentID").toInt();
-        QString name = query.value("name").toString();
-        QString year = query.value("year").toString();
-        QString major = query.value("major").toString();
-        double GPA = query.value("GPA").toDouble();
+    while(studentQuery.next()) {
+        int studentID = studentQuery.value("studentID").toInt();
+        QString name = studentQuery.value("name").toString();
+        QString year = studentQuery.value("year").toString();
+        QString major = studentQuery.value("major").toString();
+        double GPA = studentQuery.value("GPA").toDouble();
 
         manager->insertStudent(studentID, name, year, major, GPA);
-        manager->Management::debugInsertList();
+        manager->debugInsertList();
     }
 
+    QSqlQuery checkQuery;
+    if (checkQuery.exec("SELECT EXISTS (SELECT 1 FROM enrollment)"))  {
+        if (checkQuery.next() && checkQuery.value(0).toBool()) {
+
+            QSqlQuery courseQuery("SELECT studentID, courseName, grade FROM enrollment");
+            if (!courseQuery.exec()) {
+                qDebug() << "쿼리 실패:" << courseQuery.lastError().text();
+            } else {
+                while (courseQuery.next()) {
+                    int studentID = courseQuery.value("studentID").toInt();
+                    QString courseName = courseQuery.value("courseName").toString();
+                    QString grade = courseQuery.value("grade").toString();
+                    Student* stn = manager->createObject(studentID);
+                    manager->addCourse(stn, courseName);
+                    manager->updateGrade(stn, courseName, grade);
+                    //manager->debugCourseList();
+                }
+            }
+        }
+    }
     MainWindow w;
     w.show();
     delete manager;
