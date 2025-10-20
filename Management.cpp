@@ -56,6 +56,7 @@ void Management::deleteStudent(int studentID){
                 currentStudent->studentPrev->studentNext = currentStudent->studentNext;
                 currentStudent->studentNext->studentPrev = currentStudent->studentPrev;
             }
+            debugInsertList();
             delete currentStudent;
             return;
         }
