@@ -16,6 +16,7 @@ public:
     void deleteCourse(Student* stn, QString courseName);
 
     void updateGrade(Student* stn, QString courseName, QString grade);
+    bool checkCourseName(Student* stn, QString courseName);
 
     bool checkStudentID(int studentID);
     Student* createObject(int studentID);

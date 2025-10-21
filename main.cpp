@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
                     Student* stn = manager->createObject(studentID);
                     manager->addCourse(stn, courseName);
                     manager->updateGrade(stn, courseName, grade);
-                    //manager->debugCourseList();
+                    manager->debugCourseList();
                 }
             }
         }

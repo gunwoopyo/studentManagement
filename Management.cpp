@@ -3,6 +3,17 @@
 
 Student* Management::manageHead = nullptr;
 
+bool Management::checkCourseName(Student* stn, QString courseName) {
+    Course* currentCourse = stn->courseList;
+    while(currentCourse != nullptr) {
+        if(currentCourse->getCourseName() == courseName) {
+            return true;
+        }
+        currentCourse = currentCourse->courseNext;
+    }
+    return false;
+}
+
 
 void Management::insertStudent(int studentID, QString name, QString year, QString major) {
     Student* newStudent = new Student(studentID, name, year, major);
@@ -17,6 +28,7 @@ void Management::insertStudent(int studentID, QString name, QString year, QStrin
         currentStudent->studentNext = newStudent;
         newStudent->studentPrev = currentStudent;
     }
+    debugInsertList();
 }
 void Management::insertStudent(int studentID, QString name, QString major, QString year, double GPA) {
     Student* newStudent = new Student(studentID, name, major, year, GPA);
@@ -81,7 +93,6 @@ void Management::addCourse(Student* stn, QString courseName) {
         currentCourse->courseNext = newCourse;
         newCourse->coursePrev = currentCourse;
     }
-
     qDebug() << "####### 과목 추가 주소 디버그 ======================================================================";
     int index = 0;
     Course* currentCourse = stn->courseList;
