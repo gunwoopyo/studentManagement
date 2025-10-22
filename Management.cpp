@@ -93,21 +93,21 @@ void Management::addCourse(Student* stn, QString courseName) {
         currentCourse->courseNext = newCourse;
         newCourse->coursePrev = currentCourse;
     }
-    qDebug() << "####### 과목 추가 주소 디버그 ======================================================================";
-    int index = 0;
-    Course* currentCourse = stn->courseList;
-    if(currentCourse == nullptr) {
-        qDebug() << "Student list is empty";
-        return ;
-    }
-    while(currentCourse != nullptr) {
+    //qDebug() << "####### 과목 추가 주소 디버그 ======================================================================";
+    //int index = 0;
+    // Course* currentCourse = stn->courseList;
+    // if(currentCourse == nullptr) {
+    //     qDebug() << "Student list is empty";
+    //     return ;
+    // }
+    // while(currentCourse != nullptr) {
 
-        qDebug()<<"학번"<<stn->getStudentID() << " 과목 노드"<<index  <<   " 이전 과목 주소" << currentCourse->coursePrev << " 현재 주소 :" << currentCourse
-                 <<" 다음 주소 :" << currentCourse->courseNext;
+    //     qDebug()<<"학번"<<stn->getStudentID() << " 과목 노드"<<index  <<   " 이전 과목 주소" << currentCourse->coursePrev << " 현재 주소 :" << currentCourse
+    //              <<" 다음 주소 :" << currentCourse->courseNext;
 
-        currentCourse = currentCourse ->courseNext;
-        index++;
-    }
+    //     currentCourse = currentCourse ->courseNext;
+    //     index++;
+    // }
 }
 void Management::addCourse(Student* stn, QString courseName, QString grade) {
     Course* currentCourse = stn->courseList;

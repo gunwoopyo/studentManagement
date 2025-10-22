@@ -37,6 +37,7 @@ double Student::calculateGPA() {
         count++;
         currentCourse = currentCourse->courseNext;
     }
+
     GPA = gradeToNumber / count;
     GPA = std::round(GPA * 100) / 100;
     return GPA;

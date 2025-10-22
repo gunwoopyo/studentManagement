@@ -2,11 +2,9 @@
 #define MANAGEMENT_H
 #include <QString>
 #include "Student.h"
-
 class Management {
 public:
     static Student* manageHead;
-
     void insertStudent(int studentID, QString name, QString major, QString year);
     void insertStudent(int studentID, QString name, QString major, QString year, double GPA);
     void deleteStudent(int studentID);
@@ -16,8 +14,8 @@ public:
     void deleteCourse(Student* stn, QString courseName);
 
     void updateGrade(Student* stn, QString courseName, QString grade);
-    bool checkCourseName(Student* stn, QString courseName);
 
+    bool checkCourseName(Student* stn, QString courseName);
     bool checkStudentID(int studentID);
     Student* createObject(int studentID);
 

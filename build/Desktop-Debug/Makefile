@@ -945,6 +945,10 @@ moc_mainwindow.cpp: ../../mainwindow.h \
 		../../../Qt/6.10.0/gcc_64/include/QtCore/qlocale.h \
 		../../../Qt/6.10.0/gcc_64/include/QtGui/qguiapplication_platform.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qtabwidget.h \
+		ui_mainwindow.h \
+		../../../Qt/6.10.0/gcc_64/include/QtCore/QVariant \
+		../../../Qt/6.10.0/gcc_64/include/QtWidgets/QApplication \
+		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qapplication.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/QComboBox \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qcombobox.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
@@ -959,10 +963,6 @@ moc_mainwindow.cpp: ../../mainwindow.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qrubberband.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qframe.h \
 		../../../Qt/6.10.0/gcc_64/include/QtCore/qabstractitemmodel.h \
-		ui_mainwindow.h \
-		../../../Qt/6.10.0/gcc_64/include/QtCore/QVariant \
-		../../../Qt/6.10.0/gcc_64/include/QtWidgets/QApplication \
-		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qapplication.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/QFrame \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/QHeaderView \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qheaderview.h \
@@ -1461,6 +1461,10 @@ main.o: ../../main.cpp ../../mainwindow.h \
 		../../../Qt/6.10.0/gcc_64/include/QtCore/qlocale.h \
 		../../../Qt/6.10.0/gcc_64/include/QtGui/qguiapplication_platform.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qtabwidget.h \
+		ui_mainwindow.h \
+		../../../Qt/6.10.0/gcc_64/include/QtCore/QVariant \
+		../../../Qt/6.10.0/gcc_64/include/QtWidgets/QApplication \
+		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qapplication.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/QComboBox \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qcombobox.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
@@ -1475,10 +1479,6 @@ main.o: ../../main.cpp ../../mainwindow.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qrubberband.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qframe.h \
 		../../../Qt/6.10.0/gcc_64/include/QtCore/qabstractitemmodel.h \
-		ui_mainwindow.h \
-		../../../Qt/6.10.0/gcc_64/include/QtCore/QVariant \
-		../../../Qt/6.10.0/gcc_64/include/QtWidgets/QApplication \
-		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qapplication.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/QFrame \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/QHeaderView \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qheaderview.h \
@@ -1514,6 +1514,7 @@ main.o: ../../main.cpp ../../mainwindow.h \
 		../../../Qt/6.10.0/gcc_64/include/QtCore/QString \
 		../../Student.h \
 		../../Course.h \
+		../../../Qt/6.10.0/gcc_64/include/QtCore/QCoreApplication \
 		../../../Qt/6.10.0/gcc_64/include/QtSql/QSqlDatabase \
 		../../../Qt/6.10.0/gcc_64/include/QtSql/qsqldatabase.h \
 		../../../Qt/6.10.0/gcc_64/include/QtSql/qtsqlglobal.h \
@@ -1522,7 +1523,9 @@ main.o: ../../main.cpp ../../mainwindow.h \
 		../../../Qt/6.10.0/gcc_64/include/QtCore/qmetaobject.h \
 		../../../Qt/6.10.0/gcc_64/include/QtSql/QSqlError \
 		../../../Qt/6.10.0/gcc_64/include/QtSql/qsqlerror.h \
-		../../../Qt/6.10.0/gcc_64/include/QtCore/QDebug
+		../../../Qt/6.10.0/gcc_64/include/QtCore/QDebug \
+		../../../Qt/6.10.0/gcc_64/include/QtSql/QSqlQuery \
+		../../../Qt/6.10.0/gcc_64/include/QtSql/qsqlquery.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../main.cpp
 
 mainwindow.o: ../../mainwindow.cpp ../../../Qt/6.10.0/gcc_64/include/QtWidgets/QMessageBox \
@@ -1725,17 +1728,32 @@ mainwindow.o: ../../mainwindow.cpp ../../../Qt/6.10.0/gcc_64/include/QtWidgets/Q
 		../../../Qt/6.10.0/gcc_64/include/QtCore/qlocale.h \
 		../../../Qt/6.10.0/gcc_64/include/QtGui/qguiapplication_platform.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		../../../Qt/6.10.0/gcc_64/include/QtSql/QSqlQuery \
+		../../../Qt/6.10.0/gcc_64/include/QtSql/qsqlquery.h \
+		../../../Qt/6.10.0/gcc_64/include/QtSql/qtsqlglobal.h \
+		../../../Qt/6.10.0/gcc_64/include/QtSql/qtsql-config.h \
+		../../../Qt/6.10.0/gcc_64/include/QtSql/qtsqlexports.h \
+		../../../Qt/6.10.0/gcc_64/include/QtSql/qsqldatabase.h \
+		../../../Qt/6.10.0/gcc_64/include/QtCore/qmetaobject.h \
+		../../../Qt/6.10.0/gcc_64/include/QtSql/QSqlError \
+		../../../Qt/6.10.0/gcc_64/include/QtSql/qsqlerror.h \
+		../../../Qt/6.10.0/gcc_64/include/QtCore/QDebug \
+		../../../Qt/6.10.0/gcc_64/include/QtCore/QRegularExpression \
+		../../../Qt/6.10.0/gcc_64/include/QtCore/qregularexpression.h \
 		../../mainwindow.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/QMainWindow \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qmainwindow.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qtabwidget.h \
+		ui_mainwindow.h \
+		../../../Qt/6.10.0/gcc_64/include/QtCore/QVariant \
+		../../../Qt/6.10.0/gcc_64/include/QtWidgets/QApplication \
+		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qapplication.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/QComboBox \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qcombobox.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qstyleoption.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qabstractspinbox.h \
 		../../../Qt/6.10.0/gcc_64/include/QtGui/qvalidator.h \
-		../../../Qt/6.10.0/gcc_64/include/QtCore/qregularexpression.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qslider.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qabstractslider.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qstyle.h \
@@ -1743,10 +1761,6 @@ mainwindow.o: ../../mainwindow.cpp ../../../Qt/6.10.0/gcc_64/include/QtWidgets/Q
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qrubberband.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qframe.h \
 		../../../Qt/6.10.0/gcc_64/include/QtCore/qabstractitemmodel.h \
-		ui_mainwindow.h \
-		../../../Qt/6.10.0/gcc_64/include/QtCore/QVariant \
-		../../../Qt/6.10.0/gcc_64/include/QtWidgets/QApplication \
-		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qapplication.h \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/QFrame \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/QHeaderView \
 		../../../Qt/6.10.0/gcc_64/include/QtWidgets/qheaderview.h \
