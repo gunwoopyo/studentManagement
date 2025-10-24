@@ -9,7 +9,7 @@ public:
     Course* coursePrev;
     Course* courseNext;
 
-    Course(QString name) : courseName(name), grade(""), coursePrev(nullptr), courseNext(nullptr) {}
+    Course(QString name) : courseName(name), grade(""), coursePrev(nullptr), courseNext(nullptr) { }
 
     QString getCourseName() {
         return courseName;
@@ -20,8 +20,8 @@ public:
     void setCourseName(QString course) {
         this->courseName = course;
     }
-    void setGrade(QString g) {
-        this->grade = g;
+    void setGrade(QString grade) {
+        this->grade = grade;
     }
 };
 

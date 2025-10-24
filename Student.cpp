@@ -2,7 +2,7 @@
 #include "Management.h"
 
 double Student::calculateGPA() {
-    double gradeToNumber = 0.0;
+    double totalGrade = 0.0;
     int count = 0;
     double GPA = 0.0;
     Course* currentCourse = courseList;
@@ -10,25 +10,25 @@ double Student::calculateGPA() {
     while(currentCourse != nullptr) {
         QString grade = currentCourse->getGrade();
         if (grade == "A+") {
-            gradeToNumber += 4.5;
+            totalGrade += 4.5;
         }
         else if (grade == "A") {
-            gradeToNumber += 4.0;
+            totalGrade += 4.0;
         }
         else if (grade == "B+") {
-            gradeToNumber += 3.5;
+            totalGrade += 3.5;
         }
         else if (grade == "B") {
-            gradeToNumber += 3.0;
+            totalGrade += 3.0;
         }
         else if (grade == "C+") {
-            gradeToNumber += 2.5;
+            totalGrade += 2.5;
         }
         else if (grade == "C") {
-            gradeToNumber += 2.0;
+            totalGrade += 2.0;
         }
         else if (grade == "F") {
-            gradeToNumber += 0.0;
+            totalGrade += 0.0;
         }
         else if (grade == "") {
             currentCourse = currentCourse->courseNext;
@@ -38,8 +38,14 @@ double Student::calculateGPA() {
         currentCourse = currentCourse->courseNext;
     }
 
-    GPA = gradeToNumber / count;
-    GPA = std::round(GPA * 100) / 100;
+    if(count == 0) {
+        GPA = 0;
+    }
+    else {
+        GPA = totalGrade / count;
+        GPA = std::round(GPA * 100) / 100;
+    }
+
     return GPA;
 }
 

@@ -48,33 +48,33 @@ public:
     QToolButton *searchAscPushButton;
     QToolButton *searchDescPushButton;
     QPushButton *deleteStudentPushButton;
-    QPushButton *searchStudentPushButton;
-    QPushButton *searchAllStudentButton;
-    QPushButton *clearStudentDataPushButton;
     QLabel *totalStudent;
     QLabel *label;
+    QPushButton *clearStudentTextPushButton;
+    QPushButton *searchStudentPushButton;
+    QPushButton *searchAllStudentButton;
     QWidget *addCourse;
     QFrame *addCourseFrame;
     QLineEdit *courseStudentIDText;
     QLabel *courseStudentID;
-    QLabel *courseMajor;
     QLabel *courseYear;
     QComboBox *courseYearComboBox;
     QLabel *courseName;
-    QLineEdit *courseNameText;
-    QPushButton *courseAddPushButton;
+    QLineEdit *courseStudentNameText;
+    QComboBox *courseNameComboBox;
     QLabel *courseCourseName;
-    QComboBox *courseCourseNameComboBox;
+    QLabel *courseMajor;
     QComboBox *courseMajorComboBox;
+    QPushButton *courseAddPushButton;
     QTableWidget *courseTable;
     QPushButton *courseSearchPushButton;
     QPushButton *courseAllSearchPushButton;
-    QLabel *courseGrade;
+    QPushButton *clearCourseTextPushButton;
+    QLabel *label_2;
+    QPushButton *deleteCoursePushButton;
     QComboBox *courseGradeComboBox;
     QPushButton *courseGradePushButton;
-    QPushButton *deleteCoursePushButton;
-    QPushButton *clearCourseDataPushButton;
-    QLabel *label_2;
+    QLabel *label_3;
     QLabel *label_9;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -92,7 +92,7 @@ public:
         centralwidget->setObjectName("centralwidget");
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName("tabWidget");
-        tabWidget->setGeometry(QRect(30, 60, 931, 631));
+        tabWidget->setGeometry(QRect(20, 60, 931, 631));
         tabWidget->setTabletTracking(false);
         tabWidget->setTabPosition(QTabWidget::TabPosition::North);
         tabWidget->setTabShape(QTabWidget::TabShape::Rounded);
@@ -102,7 +102,7 @@ public:
         search->setObjectName("search");
         searchFrame = new QFrame(search);
         searchFrame->setObjectName("searchFrame");
-        searchFrame->setGeometry(QRect(50, 80, 821, 91));
+        searchFrame->setGeometry(QRect(50, 80, 821, 81));
         searchFrame->setFrameShape(QFrame::Shape::StyledPanel);
         searchFrame->setFrameShadow(QFrame::Shadow::Plain);
         searchStudentIDText = new QLineEdit(searchFrame);
@@ -131,10 +131,10 @@ public:
         searchMajorComboBox->addItem(QString());
         searchMajorComboBox->addItem(QString());
         searchMajorComboBox->setObjectName("searchMajorComboBox");
-        searchMajorComboBox->setGeometry(QRect(580, 30, 101, 26));
+        searchMajorComboBox->setGeometry(QRect(590, 30, 101, 26));
         searchMajor = new QLabel(searchFrame);
         searchMajor->setObjectName("searchMajor");
-        searchMajor->setGeometry(QRect(540, 30, 31, 18));
+        searchMajor->setGeometry(QRect(550, 30, 31, 18));
         searchMajor->setFont(font1);
         searchStudentID = new QLabel(searchFrame);
         searchStudentID->setObjectName("searchStudentID");
@@ -142,14 +142,14 @@ public:
         searchStudentID->setFont(font1);
         searchStudentNameText = new QLineEdit(searchFrame);
         searchStudentNameText->setObjectName("searchStudentNameText");
-        searchStudentNameText->setGeometry(QRect(240, 30, 91, 26));
+        searchStudentNameText->setGeometry(QRect(250, 30, 91, 26));
         searchStudentName = new QLabel(searchFrame);
         searchStudentName->setObjectName("searchStudentName");
-        searchStudentName->setGeometry(QRect(200, 30, 31, 18));
+        searchStudentName->setGeometry(QRect(210, 30, 31, 18));
         searchStudentName->setFont(font1);
         registrationStudentPushButton = new QPushButton(searchFrame);
         registrationStudentPushButton->setObjectName("registrationStudentPushButton");
-        registrationStudentPushButton->setGeometry(QRect(720, 20, 71, 51));
+        registrationStudentPushButton->setGeometry(QRect(730, 20, 71, 41));
         QFont font2;
         font2.setPointSize(11);
         font2.setBold(false);
@@ -178,7 +178,7 @@ public:
         __qtablewidgetitem4->setFont(font3);
         searchTable->setHorizontalHeaderItem(4, __qtablewidgetitem4);
         searchTable->setObjectName("searchTable");
-        searchTable->setGeometry(QRect(90, 280, 741, 271));
+        searchTable->setGeometry(QRect(90, 270, 741, 301));
         searchTable->horizontalHeader()->setDefaultSectionSize(140);
         searchSortComboBox = new QComboBox(search);
         searchSortComboBox->addItem(QString());
@@ -187,27 +187,45 @@ public:
         searchSortComboBox->addItem(QString());
         searchSortComboBox->addItem(QString());
         searchSortComboBox->setObjectName("searchSortComboBox");
-        searchSortComboBox->setGeometry(QRect(90, 240, 111, 31));
+        searchSortComboBox->setGeometry(QRect(90, 230, 111, 31));
         QFont font4;
         font4.setPointSize(10);
         font4.setBold(false);
         searchSortComboBox->setFont(font4);
         searchAscPushButton = new QToolButton(search);
         searchAscPushButton->setObjectName("searchAscPushButton");
-        searchAscPushButton->setGeometry(QRect(210, 240, 26, 31));
+        searchAscPushButton->setGeometry(QRect(210, 230, 26, 31));
         QFont font5;
         font5.setPointSize(13);
         font5.setBold(true);
         searchAscPushButton->setFont(font5);
         searchDescPushButton = new QToolButton(search);
         searchDescPushButton->setObjectName("searchDescPushButton");
-        searchDescPushButton->setGeometry(QRect(240, 240, 26, 31));
+        searchDescPushButton->setGeometry(QRect(240, 230, 26, 31));
         searchDescPushButton->setFont(font5);
         deleteStudentPushButton = new QPushButton(search);
         deleteStudentPushButton->setObjectName("deleteStudentPushButton");
-        deleteStudentPushButton->setGeometry(QRect(740, 240, 91, 31));
+        deleteStudentPushButton->setGeometry(QRect(740, 230, 91, 31));
         deleteStudentPushButton->setFont(font2);
         deleteStudentPushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #e0e0e0;\n"
+"}"));
+        totalStudent = new QLabel(search);
+        totalStudent->setObjectName("totalStudent");
+        totalStudent->setGeometry(QRect(280, 240, 151, 20));
+        totalStudent->setFont(font);
+        label = new QLabel(search);
+        label->setObjectName("label");
+        label->setGeometry(QRect(50, 30, 171, 31));
+        QFont font6;
+        font6.setPointSize(14);
+        font6.setBold(true);
+        label->setFont(font6);
+        clearStudentTextPushButton = new QPushButton(search);
+        clearStudentTextPushButton->setObjectName("clearStudentTextPushButton");
+        clearStudentTextPushButton->setGeometry(QRect(610, 40, 81, 31));
+        clearStudentTextPushButton->setFont(font2);
+        clearStudentTextPushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: #e0e0e0;\n"
 "}"));
         searchStudentPushButton = new QPushButton(search);
@@ -224,50 +242,28 @@ public:
         searchAllStudentButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: #e0e0e0;\n"
 "}"));
-        clearStudentDataPushButton = new QPushButton(search);
-        clearStudentDataPushButton->setObjectName("clearStudentDataPushButton");
-        clearStudentDataPushButton->setGeometry(QRect(610, 40, 81, 31));
-        clearStudentDataPushButton->setFont(font2);
-        clearStudentDataPushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: #e0e0e0;\n"
-"}"));
-        totalStudent = new QLabel(search);
-        totalStudent->setObjectName("totalStudent");
-        totalStudent->setGeometry(QRect(680, 560, 151, 20));
-        totalStudent->setFont(font3);
-        label = new QLabel(search);
-        label->setObjectName("label");
-        label->setGeometry(QRect(50, 40, 171, 31));
-        QFont font6;
-        font6.setPointSize(14);
-        font6.setBold(true);
-        label->setFont(font6);
         tabWidget->addTab(search, QString());
         tabWidget->setTabText(tabWidget->indexOf(search), QString::fromUtf8("\355\225\231\354\203\235 \353\223\261\353\241\235 \354\202\255\354\240\234 \354\210\230\354\240\225"));
         addCourse = new QWidget();
         addCourse->setObjectName("addCourse");
         addCourseFrame = new QFrame(addCourse);
         addCourseFrame->setObjectName("addCourseFrame");
-        addCourseFrame->setGeometry(QRect(50, 80, 821, 101));
+        addCourseFrame->setGeometry(QRect(50, 80, 821, 121));
         addCourseFrame->setFrameShape(QFrame::Shape::StyledPanel);
         addCourseFrame->setFrameShadow(QFrame::Shadow::Plain);
         addCourseFrame->setLineWidth(1);
         courseStudentIDText = new QLineEdit(addCourseFrame);
         courseStudentIDText->setObjectName("courseStudentIDText");
-        courseStudentIDText->setGeometry(QRect(90, 20, 101, 26));
+        courseStudentIDText->setGeometry(QRect(90, 20, 101, 31));
         courseStudentID = new QLabel(addCourseFrame);
         courseStudentID->setObjectName("courseStudentID");
-        courseStudentID->setGeometry(QRect(50, 20, 31, 18));
+        courseStudentID->setGeometry(QRect(50, 30, 31, 18));
         QFont font7;
         font7.setPointSize(12);
         courseStudentID->setFont(font7);
-        courseMajor = new QLabel(addCourseFrame);
-        courseMajor->setObjectName("courseMajor");
-        courseMajor->setGeometry(QRect(50, 60, 31, 18));
-        courseMajor->setFont(font7);
         courseYear = new QLabel(addCourseFrame);
         courseYear->setObjectName("courseYear");
-        courseYear->setGeometry(QRect(510, 20, 31, 18));
+        courseYear->setGeometry(QRect(520, 30, 31, 18));
         courseYear->setFont(font7);
         courseYearComboBox = new QComboBox(addCourseFrame);
         courseYearComboBox->addItem(QString());
@@ -278,30 +274,27 @@ public:
         courseYearComboBox->addItem(QString());
         courseYearComboBox->addItem(QString());
         courseYearComboBox->setObjectName("courseYearComboBox");
-        courseYearComboBox->setGeometry(QRect(550, 20, 101, 26));
+        courseYearComboBox->setGeometry(QRect(560, 20, 101, 31));
         courseName = new QLabel(addCourseFrame);
         courseName->setObjectName("courseName");
-        courseName->setGeometry(QRect(290, 20, 31, 18));
+        courseName->setGeometry(QRect(290, 30, 31, 18));
         courseName->setFont(font7);
-        courseNameText = new QLineEdit(addCourseFrame);
-        courseNameText->setObjectName("courseNameText");
-        courseNameText->setGeometry(QRect(330, 20, 101, 26));
-        courseAddPushButton = new QPushButton(addCourseFrame);
-        courseAddPushButton->setObjectName("courseAddPushButton");
-        courseAddPushButton->setGeometry(QRect(700, 20, 71, 51));
-        courseAddPushButton->setFont(font3);
-        courseAddPushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: #e0e0e0;\n"
-"}"));
+        courseStudentNameText = new QLineEdit(addCourseFrame);
+        courseStudentNameText->setObjectName("courseStudentNameText");
+        courseStudentNameText->setGeometry(QRect(330, 20, 101, 31));
+        courseNameComboBox = new QComboBox(addCourseFrame);
+        courseNameComboBox->addItem(QString());
+        courseNameComboBox->setObjectName("courseNameComboBox");
+        courseNameComboBox->setEnabled(true);
+        courseNameComboBox->setGeometry(QRect(330, 70, 101, 31));
         courseCourseName = new QLabel(addCourseFrame);
         courseCourseName->setObjectName("courseCourseName");
-        courseCourseName->setGeometry(QRect(260, 60, 61, 20));
+        courseCourseName->setGeometry(QRect(260, 80, 61, 20));
         courseCourseName->setFont(font7);
-        courseCourseNameComboBox = new QComboBox(addCourseFrame);
-        courseCourseNameComboBox->addItem(QString());
-        courseCourseNameComboBox->setObjectName("courseCourseNameComboBox");
-        courseCourseNameComboBox->setEnabled(true);
-        courseCourseNameComboBox->setGeometry(QRect(330, 60, 101, 26));
+        courseMajor = new QLabel(addCourseFrame);
+        courseMajor->setObjectName("courseMajor");
+        courseMajor->setGeometry(QRect(50, 80, 31, 18));
+        courseMajor->setFont(font7);
         courseMajorComboBox = new QComboBox(addCourseFrame);
         courseMajorComboBox->addItem(QString());
         courseMajorComboBox->addItem(QString());
@@ -309,7 +302,14 @@ public:
         courseMajorComboBox->addItem(QString());
         courseMajorComboBox->setObjectName("courseMajorComboBox");
         courseMajorComboBox->setEnabled(true);
-        courseMajorComboBox->setGeometry(QRect(90, 60, 101, 26));
+        courseMajorComboBox->setGeometry(QRect(90, 70, 101, 31));
+        courseAddPushButton = new QPushButton(addCourseFrame);
+        courseAddPushButton->setObjectName("courseAddPushButton");
+        courseAddPushButton->setGeometry(QRect(710, 30, 71, 51));
+        courseAddPushButton->setFont(font3);
+        courseAddPushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #e0e0e0;\n"
+"}"));
         courseTable = new QTableWidget(addCourse);
         if (courseTable->columnCount() < 6)
             courseTable->setColumnCount(6);
@@ -332,7 +332,7 @@ public:
         __qtablewidgetitem10->setFont(font3);
         courseTable->setHorizontalHeaderItem(5, __qtablewidgetitem10);
         courseTable->setObjectName("courseTable");
-        courseTable->setGeometry(QRect(90, 290, 761, 261));
+        courseTable->setGeometry(QRect(90, 280, 761, 291));
         courseTable->horizontalHeader()->setDefaultSectionSize(120);
         courseSearchPushButton = new QPushButton(addCourse);
         courseSearchPushButton->setObjectName("courseSearchPushButton");
@@ -348,10 +348,24 @@ public:
         courseAllSearchPushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: #e0e0e0;\n"
 "}"));
-        courseGrade = new QLabel(addCourse);
-        courseGrade->setObjectName("courseGrade");
-        courseGrade->setGeometry(QRect(560, 260, 31, 20));
-        courseGrade->setFont(font7);
+        clearCourseTextPushButton = new QPushButton(addCourse);
+        clearCourseTextPushButton->setObjectName("clearCourseTextPushButton");
+        clearCourseTextPushButton->setGeometry(QRect(610, 40, 81, 31));
+        clearCourseTextPushButton->setFont(font3);
+        clearCourseTextPushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #e0e0e0;\n"
+"}"));
+        label_2 = new QLabel(addCourse);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(50, 40, 231, 21));
+        label_2->setFont(font6);
+        deleteCoursePushButton = new QPushButton(addCourse);
+        deleteCoursePushButton->setObjectName("deleteCoursePushButton");
+        deleteCoursePushButton->setGeometry(QRect(770, 240, 81, 31));
+        deleteCoursePushButton->setFont(font3);
+        deleteCoursePushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #e0e0e0;\n"
+"}"));
         courseGradeComboBox = new QComboBox(addCourse);
         courseGradeComboBox->addItem(QString());
         courseGradeComboBox->addItem(QString());
@@ -362,32 +376,19 @@ public:
         courseGradeComboBox->addItem(QString());
         courseGradeComboBox->addItem(QString());
         courseGradeComboBox->setObjectName("courseGradeComboBox");
-        courseGradeComboBox->setGeometry(QRect(600, 250, 71, 31));
+        courseGradeComboBox->setGeometry(QRect(590, 240, 81, 31));
+        courseGradeComboBox->setFont(font7);
         courseGradePushButton = new QPushButton(addCourse);
         courseGradePushButton->setObjectName("courseGradePushButton");
-        courseGradePushButton->setGeometry(QRect(680, 250, 81, 31));
+        courseGradePushButton->setGeometry(QRect(680, 240, 81, 31));
         courseGradePushButton->setFont(font3);
         courseGradePushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: #e0e0e0;\n"
 "}"));
-        deleteCoursePushButton = new QPushButton(addCourse);
-        deleteCoursePushButton->setObjectName("deleteCoursePushButton");
-        deleteCoursePushButton->setGeometry(QRect(770, 250, 81, 31));
-        deleteCoursePushButton->setFont(font3);
-        deleteCoursePushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: #e0e0e0;\n"
-"}"));
-        clearCourseDataPushButton = new QPushButton(addCourse);
-        clearCourseDataPushButton->setObjectName("clearCourseDataPushButton");
-        clearCourseDataPushButton->setGeometry(QRect(610, 40, 81, 31));
-        clearCourseDataPushButton->setFont(font3);
-        clearCourseDataPushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: #e0e0e0;\n"
-"}"));
-        label_2 = new QLabel(addCourse);
-        label_2->setObjectName("label_2");
-        label_2->setGeometry(QRect(50, 40, 231, 21));
-        label_2->setFont(font6);
+        label_3 = new QLabel(addCourse);
+        label_3->setObjectName("label_3");
+        label_3->setGeometry(QRect(550, 250, 31, 18));
+        label_3->setFont(font7);
         tabWidget->addTab(addCourse, QString());
         label_9 = new QLabel(centralwidget);
         label_9->setObjectName("label_9");
@@ -453,13 +454,12 @@ public:
         searchAscPushButton->setText(QCoreApplication::translate("MainWindow", " \342\206\221", nullptr));
         searchDescPushButton->setText(QCoreApplication::translate("MainWindow", "\342\206\223", nullptr));
         deleteStudentPushButton->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\203\235 \354\202\255\354\240\234", nullptr));
-        searchStudentPushButton->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\203\235 \354\241\260\355\232\214", nullptr));
-        searchAllStudentButton->setText(QCoreApplication::translate("MainWindow", "\354\240\204\354\262\264 \354\241\260\355\232\214", nullptr));
-        clearStudentDataPushButton->setText(QCoreApplication::translate("MainWindow", "\354\236\205\353\240\245 \354\264\210\352\270\260\355\231\224", nullptr));
         totalStudent->setText(QString());
         label->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\203\235 \353\223\261\353\241\235 \354\202\255\354\240\234 \354\210\230\354\240\225", nullptr));
+        clearStudentTextPushButton->setText(QCoreApplication::translate("MainWindow", "\354\236\205\353\240\245 \354\264\210\352\270\260\355\231\224", nullptr));
+        searchStudentPushButton->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\203\235 \354\241\260\355\232\214", nullptr));
+        searchAllStudentButton->setText(QCoreApplication::translate("MainWindow", "\354\240\204\354\262\264 \354\241\260\355\232\214", nullptr));
         courseStudentID->setText(QCoreApplication::translate("MainWindow", "\355\225\231\353\262\210", nullptr));
-        courseMajor->setText(QCoreApplication::translate("MainWindow", "\354\240\204\352\263\265", nullptr));
         courseYear->setText(QCoreApplication::translate("MainWindow", "\355\225\231\353\205\204", nullptr));
         courseYearComboBox->setItemText(0, QString());
         courseYearComboBox->setItemText(1, QCoreApplication::translate("MainWindow", "1", nullptr));
@@ -470,15 +470,16 @@ public:
         courseYearComboBox->setItemText(6, QCoreApplication::translate("MainWindow", "6", nullptr));
 
         courseName->setText(QCoreApplication::translate("MainWindow", "\354\235\264\353\246\204", nullptr));
-        courseAddPushButton->setText(QCoreApplication::translate("MainWindow", "\352\263\274\353\252\251 \354\266\224\352\260\200", nullptr));
-        courseCourseName->setText(QCoreApplication::translate("MainWindow", "\354\210\230\352\260\225 \352\263\274\353\252\251", nullptr));
-        courseCourseNameComboBox->setItemText(0, QString());
+        courseNameComboBox->setItemText(0, QString());
 
+        courseCourseName->setText(QCoreApplication::translate("MainWindow", "\354\210\230\352\260\225 \352\263\274\353\252\251", nullptr));
+        courseMajor->setText(QCoreApplication::translate("MainWindow", "\354\240\204\352\263\265", nullptr));
         courseMajorComboBox->setItemText(0, QString());
         courseMajorComboBox->setItemText(1, QCoreApplication::translate("MainWindow", "\354\273\264\355\223\250\355\204\260\352\263\265\355\225\231\352\263\274", nullptr));
         courseMajorComboBox->setItemText(2, QCoreApplication::translate("MainWindow", "\354\240\204\354\236\220\352\263\265\355\225\231\352\263\274", nullptr));
         courseMajorComboBox->setItemText(3, QCoreApplication::translate("MainWindow", "\352\270\260\352\263\204\352\263\265\355\225\231\352\263\274", nullptr));
 
+        courseAddPushButton->setText(QCoreApplication::translate("MainWindow", "\352\263\274\353\252\251 \354\266\224\352\260\200", nullptr));
         QTableWidgetItem *___qtablewidgetitem5 = courseTable->horizontalHeaderItem(0);
         ___qtablewidgetitem5->setText(QCoreApplication::translate("MainWindow", "\355\225\231\353\262\210", nullptr));
         QTableWidgetItem *___qtablewidgetitem6 = courseTable->horizontalHeaderItem(1);
@@ -493,7 +494,9 @@ public:
         ___qtablewidgetitem10->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\240\220", nullptr));
         courseSearchPushButton->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\203\235 \354\241\260\355\232\214", nullptr));
         courseAllSearchPushButton->setText(QCoreApplication::translate("MainWindow", "\354\240\204\354\262\264 \354\241\260\355\232\214", nullptr));
-        courseGrade->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\240\220", nullptr));
+        clearCourseTextPushButton->setText(QCoreApplication::translate("MainWindow", "\354\236\205\353\240\245 \354\264\210\352\270\260\355\231\224", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "\352\263\274\353\252\251 \354\266\224\352\260\200 \354\202\255\354\240\234  \353\260\217 \355\225\231\354\240\220 \353\223\261\353\241\235", nullptr));
+        deleteCoursePushButton->setText(QCoreApplication::translate("MainWindow", "\352\263\274\353\252\251 \354\202\255\354\240\234", nullptr));
         courseGradeComboBox->setItemText(0, QString());
         courseGradeComboBox->setItemText(1, QCoreApplication::translate("MainWindow", "A+", nullptr));
         courseGradeComboBox->setItemText(2, QCoreApplication::translate("MainWindow", "A", nullptr));
@@ -504,9 +507,7 @@ public:
         courseGradeComboBox->setItemText(7, QCoreApplication::translate("MainWindow", "F", nullptr));
 
         courseGradePushButton->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\240\220 \353\223\261\353\241\235", nullptr));
-        deleteCoursePushButton->setText(QCoreApplication::translate("MainWindow", "\352\263\274\353\252\251 \354\202\255\354\240\234", nullptr));
-        clearCourseDataPushButton->setText(QCoreApplication::translate("MainWindow", "\354\236\205\353\240\245 \354\264\210\352\270\260\355\231\224", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "\352\263\274\353\252\251 \354\266\224\352\260\200 \354\202\255\354\240\234  \353\260\217 \355\225\231\354\240\220 \353\223\261\353\241\235", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\240\220", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(addCourse), QCoreApplication::translate("MainWindow", "\352\263\274\353\252\251 \354\266\224\352\260\200 \354\202\255\354\240\234  \353\260\217 \355\225\231\354\240\220 \353\223\261\353\241\235", nullptr));
         label_9->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\203\235 \352\264\200\353\246\254 \355\224\204\353\241\234\352\267\270\353\236\250", nullptr));
     } // retranslateUi

@@ -20,17 +20,36 @@ public:
     Student(int ID, QString n, QString y, QString m, double G) : studentID(ID), name(n), year(y), major(m), GPA(G),
         courseList(nullptr), studentPrev(nullptr), studentNext(nullptr) { }
 
-    int getStudentID() { return studentID; }
-    QString getName() { return name; }
-    QString getMajor() { return major; }
-    QString getYear() { return year; }
-    double getGPA() { return GPA; }
-
-    void setStudentID(int stnID) { this->studentID = stnID; }
-    void setName(QString name) { this->name = name; }
-    void setMajor(QString major) { this->major = major; }
-    void setYear(QString year) { this->year = year; }
-    void SetGPA(double GPA) { this->GPA = GPA; }
+    int getStudentID() {
+        return studentID;
+    }
+    QString getName() {
+        return name;
+    }
+    QString getMajor() {
+        return major;
+    }
+    QString getYear() {
+        return year;
+    }
+    double getGPA() {
+        return GPA;
+    }
+    void setStudentID(int stnID) {
+        this->studentID = stnID;
+    }
+    void setName(QString name) {
+        this->name = name;
+    }
+    void setMajor(QString major) {
+        this->major = major;
+    }
+    void setYear(QString year) {
+        this->year = year;
+    }
+    void SetGPA(double GPA) {
+        this->GPA = GPA;
+    }
 
     double calculateGPA();
 

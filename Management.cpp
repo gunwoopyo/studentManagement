@@ -1,7 +1,27 @@
 #include "Management.h"
 #include <QDebug>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QDebug>
+
 
 Student* Management::manageHead = nullptr;
+
+// void Management::deleteCourseDB(int studentID, QString courseName) {
+//     QSqlQuery query;
+//     query.prepare("DELETE FROM enrollment WHERE studentID = :id AND courseName = :courseName;");
+//     query.bindValue(":id", studentID);
+//     query.bindValue(":courseName", courseName);
+
+//     if (!query.exec()) {
+//         qDebug() << "과목 삭제 실패:" << query.lastError().text();
+//         }
+// }
+
+
+
+
+
 
 bool Management::checkCourseName(Student* stn, QString courseName) {
     Course* currentCourse = stn->courseList;
@@ -46,6 +66,17 @@ void Management::insertStudent(int studentID, QString name, QString major, QStri
     newStudent->SetGPA(GPA);
 }
 
+void Management::deleteStudentDB(int studentID) {
+    QSqlQuery query;
+    query.prepare("DELETE FROM student WHERE studentID = :id;");
+    query.bindValue(":id", studentID);
+    query.exec();
+
+    query.prepare("DELETE FROM enrollment WHERE studentID = :id;");
+    query.bindValue(":id", studentID);
+    query.exec();
+}
+
 
 void Management::deleteStudent(int studentID){
     Student* currentStudent = manageHead;
@@ -74,64 +105,49 @@ void Management::deleteStudent(int studentID){
         }
         currentStudent = currentStudent->studentNext;
     }
+
+
 }
 
 
 
 
-void Management::addCourse(Student* stn, QString courseName) {
+void Management::addCourse(Student* student, QString courseName) {
     Course* newCourse = new Course(courseName);   // grade 는 일단 널.
-    if(stn->courseList == nullptr) {
-        stn->courseList = newCourse;
+    if(student->courseList == nullptr) {
+        student->courseList = newCourse;
         newCourse->coursePrev = nullptr;
     }
     else {
-        Course* currentCourse = stn->courseList;
+        Course* currentCourse = student->courseList;
         while(currentCourse->courseNext != nullptr){
             currentCourse = currentCourse->courseNext;
         }
         currentCourse->courseNext = newCourse;
         newCourse->coursePrev = currentCourse;
     }
-    //qDebug() << "####### 과목 추가 주소 디버그 ======================================================================";
-    //int index = 0;
-    // Course* currentCourse = stn->courseList;
-    // if(currentCourse == nullptr) {
-    //     qDebug() << "Student list is empty";
-    //     return ;
-    // }
-    // while(currentCourse != nullptr) {
-
-    //     qDebug()<<"학번"<<stn->getStudentID() << " 과목 노드"<<index  <<   " 이전 과목 주소" << currentCourse->coursePrev << " 현재 주소 :" << currentCourse
-    //              <<" 다음 주소 :" << currentCourse->courseNext;
-
-    //     currentCourse = currentCourse ->courseNext;
-    //     index++;
-    // }
 }
-void Management::addCourse(Student* stn, QString courseName, QString grade) {
-    Course* currentCourse = stn->courseList;
-    while(currentCourse != nullptr) {
-        if(currentCourse->getCourseName() == courseName){
-            currentCourse->setGrade(grade);
-        }
-        currentCourse = currentCourse->courseNext;
-    }
+void Management::deleteCourseDB(int studentID, QString courseName) {
+    QSqlQuery query;
+    query.prepare("DELETE FROM enrollment WHERE studentID = :id AND courseName = :courseName;");
+    query.bindValue(":id", studentID);
+    query.bindValue(":courseName", courseName);
+    query.exec();
 }
 
 
-void Management::deleteCourse(Student* stn, QString courseName) {
-    Course* currentCourse = stn->courseList;
+void Management::deleteCourse(Student* student, QString courseName) {
+    Course* currentCourse = student->courseList;
     while(currentCourse != nullptr) {
         if(currentCourse->getCourseName() == courseName) {
             // 지우려는 객체로 진입
             // 헤드포인터가 가리키는 노드가 1개만 남은 경우
             if(currentCourse->coursePrev == nullptr){
                 if(currentCourse->courseNext == nullptr) {;
-                    stn->courseList = nullptr;
+                    student->courseList = nullptr;
                 }
                 else {  // 노드가 여러 개일 때 헤드포인터가 가리키는 노드를 지우려 하는 경우
-                    stn->courseList = currentCourse->courseNext ;
+                    student->courseList = currentCourse->courseNext ;
                     currentCourse->courseNext->coursePrev = nullptr;
                 }
             }   // 앞뒤로 사이에 낀 노드를 삭제하려는 경우
@@ -152,8 +168,8 @@ void Management::deleteCourse(Student* stn, QString courseName) {
 
 
 
-void Management::updateGrade(Student* stn, QString courseName, QString grade) {
-    Course* currentCourse = stn->courseList;
+void Management::updateGrade(Student* student, QString courseName, QString grade) {
+    Course* currentCourse = student->courseList;
     while(currentCourse != nullptr) {
         if(currentCourse->getCourseName() == courseName){
             currentCourse->setGrade(grade);
@@ -216,7 +232,8 @@ void Management::debugCourseList() {
 
                 currentCourse = currentCourse->courseNext;
             }
-            return;
+
+            currentStudent = currentStudent->studentNext;
         }
     }
 }

@@ -27,26 +27,23 @@ int main(int argc, char *argv[])
         QString year = studentQuery.value("year").toString();
         QString major = studentQuery.value("major").toString();
         double GPA = studentQuery.value("GPA").toDouble();
-        manager->insertStudent(studentID, name, year, major, GPA);
-        //manager->debugInsertList();
-    }
 
+        manager->insertStudent(studentID, name, year, major, GPA);
+    }
 
     QSqlQuery courseQuery("SELECT studentID, courseName, grade FROM enrollment");
-    if(!courseQuery.next()) {
-        qDebug() << "쿼리 실패:" << courseQuery.lastError().text();
+    if (courseQuery.lastError().isValid()) {
+        qDebug() << "쿼리문 오류 : " << courseQuery.lastError().text();
         return 0;
     }
-    do {
+    while (courseQuery.next()) {
         int studentID = courseQuery.value("studentID").toInt();
         QString courseName = courseQuery.value("courseName").toString();
         QString grade = courseQuery.value("grade").toString();
 
-        Student* stn = manager->createObject(studentID);
-        manager->addCourse(stn, courseName);
-        manager->updateGrade(stn, courseName, grade);
-        //manager->debugCourseList();
-    } while (courseQuery.next());
+        manager->addCourse(manager->createObject(studentID), courseName);
+        manager->updateGrade(manager->createObject(studentID), courseName, grade);
+    }
 
     MainWindow w;
     w.show();
