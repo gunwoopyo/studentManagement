@@ -164,7 +164,7 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         }}),
         // Slot 'searchStudent'
         QtMocHelpers::SlotData<void(int, QString, QString, QString, QString)>(24, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Int, 25 }, { QMetaType::QString, 15 }, { QMetaType::QString, 16 }, { QMetaType::QString, 7 },
+            { QMetaType::Int, 13 }, { QMetaType::QString, 15 }, { QMetaType::QString, 16 }, { QMetaType::QString, 7 },
             { QMetaType::QString, 17 },
         }}),
         // Slot 'courseTable'

@@ -174,26 +174,28 @@ void MainWindow::bubbleSort(QTableWidget* table, int column, bool ascending) {
     int columnCount = table->columnCount();
 
     for (int i = 0; i < rowCount - 1; i++) {
-        for (int currentRowIndex = 0; currentRowIndex < rowCount - i - 1; currentRowIndex++) {
-            QTableWidgetItem* currentRowItem = table->item(currentRowIndex, column);
-            QTableWidgetItem* nextRowItem = table->item(currentRowIndex + 1, column);
+        for (int row = 0;  row < rowCount - i - 1;  row++) {
+            QTableWidgetItem* currentRowItem = table->item(row, column);
+            QTableWidgetItem* nextRowItem = table->item(row + 1, column);
+
             if (currentRowItem == nullptr || nextRowItem == nullptr)
                 continue;
 
-            bool currentNumeric, nextNumeric;  // 숫자로 변환 가능하면 true,
+            bool currentNumeric, nextNumeric; // 숫자로 변환 가능하면 true,
 
-            double currentRowData = currentRowItem->text().toDouble(&currentNumeric);  // 숫자로 변환하지 못 하면 0.0
+            double currentRowData = currentRowItem->text().toDouble(&currentNumeric); // 숫자로 변환하지 못 하면 변수는 0
             double nextRowData = nextRowItem->text().toDouble(&nextNumeric);
 
-            if (((currentNumeric && nextNumeric)
-                ? (ascending  ?  currentRowData > nextRowData  :  currentRowData < nextRowData)
-                : (ascending  ?  currentRowItem->text() > nextRowItem->text()  :  currentRowItem->text() < nextRowItem->text())))
+            if (((currentNumeric && nextNumeric)   // 정렬 대상이 숫자인지 아닌지 확인 --> 오름차순 or 내림차순
+                ? (ascending  ?  currentRowData  >  nextRowData  :  currentRowData  <  nextRowData)
+                : (ascending  ?  currentRowItem->text()  >  nextRowItem->text()  :  currentRowItem->text()  <  nextRowItem->text())))
 
-
-            for (int columnIndex = 0; columnIndex < columnCount; columnIndex++) {
-                QTableWidgetItem* tmp = table->takeItem(currentRowIndex, columnIndex);
-                table->setItem(currentRowIndex, columnIndex, table->takeItem(currentRowIndex + 1, columnIndex));
-                table->setItem(currentRowIndex + 1, columnIndex, tmp);
+            // setItem(행 번호, 열 번호, 뽑을 데이터)
+            // swap
+            for (int column = 0; column < columnCount; column++) {
+                QTableWidgetItem* tmp = table->takeItem(row, column);
+                table->setItem(row, column, table->takeItem(row + 1, column)); // table->takeItem(row + 1, column) 를 row, column에 맞게 넣음
+                table->setItem(row + 1, column, tmp);
             }
 
         }
@@ -359,22 +361,23 @@ void MainWindow::on_courseSearchPushButton_clicked() {
     ui->courseTable->rowCount() > 0 ?showMessegeAndClear("성공", "조회 완료하였습니다.  ", "course") : showMessegeAndClear("실패", "존재하는 학생이 없습니다.   ", "course");
 }
 
-void MainWindow::searchStudent(int stnID, QString name, QString year, QString major, QString courseName) {
+
+void MainWindow::searchStudent(int studentID, QString name, QString year, QString major, QString courseName) {
     ui->courseTable->setRowCount(0);
     Student* currentStudent = Management::manageHead;
     int row = 0;
     while (currentStudent != nullptr) {
         bool match = true;
-        if (stnID != 0 && currentStudent->getStudentID() != stnID)
+        if (studentID != 0  &&  currentStudent->getStudentID() != studentID)
             match = false;
 
-        if (!name.isEmpty() && currentStudent->getName() != name)
+        if (!name.isEmpty()  &&  currentStudent->getName() != name)
             match = false;
 
-        if (!year.isEmpty() && currentStudent->getYear() != year)
+        if (!year.isEmpty()  &&  currentStudent->getYear() != year)
             match = false;
 
-        if (!major.isEmpty() && currentStudent->getMajor() != major)
+        if (!major.isEmpty()  &&  currentStudent->getMajor() != major)
             match = false;
 
         if (!courseName.isEmpty()) {
@@ -428,6 +431,69 @@ void MainWindow::searchStudent(int stnID, QString name, QString year, QString ma
     applyCourseTableRowColors(ui->courseTable);
 }
 
+// void MainWindow::searchStudent(int studentID, const QString& name, const QString& year, const QString& major, const QString& courseName) {
+//     ui->courseTable->setRowCount(0);
+//     int row = 0;
+
+//     for (Student* student = Management::manageHead; student != nullptr; student = student->studentNext) {
+//         if (!isStudentMatch(student, studentID, name, year, major, courseName))
+//             continue;
+
+//         // 학생의 수강 과목이 없으면 빈 행 추가
+//         if (student->courseList == nullptr) {
+//             addStudentRowToTable(student, row);
+//             row++;
+//         } else {
+//             // 학생의 각 수강 과목마다 행 추가
+//             for (Course* course = student->courseList; course != nullptr; course = course->courseNext) {
+//                 if (!courseName.isEmpty() && course->getCourseName() != courseName)
+//                     continue;
+//                 addStudentRowToTable(student, row, course);
+//                 row++;
+//             }
+//         }
+//     }
+
+//     applyCourseTableRowColors(ui->courseTable);
+// }
+
+
+// // 학생 조건 확인
+// bool MainWindow::isStudentMatch(Student* student, int studentID, const QString& name,
+//                                 const QString& year, const QString& major, const QString& courseName) {
+//     if (studentID != 0 && student->getStudentID() != studentID) return false;
+//     if (!name.isEmpty() && student->getName() != name) return false;
+//     if (!year.isEmpty() && student->getYear() != year) return false;
+//     if (!major.isEmpty() && student->getMajor() != major) return false;
+
+//     if (!courseName.isEmpty()) {
+//         for (Course* course = student->courseList; course != nullptr; course = course->courseNext) {
+//             if (course->getCourseName() == courseName)
+//                 return true;
+//         }
+//         return false;
+//     }
+
+//     return true;
+// }
+
+// // 테이블에 학생/과목 행 추가
+// void MainWindow::addStudentRowToTable(Student* student, int row, Course* course = nullptr) {
+//     ui->courseTable->insertRow(row);
+//     ui->courseTable->setItem(row, 0, new QTableWidgetItem(QString::number(student->getStudentID())));
+//     ui->courseTable->setItem(row, 1, new QTableWidgetItem(student->getName()));
+//     ui->courseTable->setItem(row, 2, new QTableWidgetItem(student->getYear()));
+//     ui->courseTable->setItem(row, 3, new QTableWidgetItem(student->getMajor()));
+
+//     if (course) {
+//         ui->courseTable->setItem(row, 4, new QTableWidgetItem(course->getCourseName()));
+//         if (!course->getGrade().isEmpty())
+//             ui->courseTable->setItem(row, 5, new QTableWidgetItem(course->getGrade()));
+//     }
+// }
+
+
+
 
 void MainWindow::studentTable(Student* currentStudent) {
     int row = 0;
@@ -440,6 +506,8 @@ void MainWindow::studentTable(Student* currentStudent) {
     totalStudentCount();
     applyStudentTableRowColors(ui->searchTable);
 }
+
+
 void MainWindow::applyStudentTableRow(QTableWidget* searchTable, int row, Student* student) {
     int column = 0;
     searchTable->insertRow(row);

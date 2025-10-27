@@ -55,7 +55,7 @@ public slots:
 
 
 
-    void searchStudent(int stnID, QString name, QString year, QString major, QString  courseName);  // 학생 검색 테이블
+    void searchStudent(int studentID, QString name, QString year, QString major, QString  courseName);  // 학생 검색 테이블
 
 
     void courseTable(Student* student);
