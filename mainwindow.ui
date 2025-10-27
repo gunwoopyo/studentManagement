@@ -51,7 +51,7 @@
     </property>
     <widget class="QWidget" name="search">
      <attribute name="title">
-      <string notr="true">학생 등록 삭제 수정</string>
+      <string notr="true">학생 조회 등록 삭제 </string>
      </attribute>
      <widget class="QFrame" name="searchFrame">
       <property name="geometry">
@@ -330,7 +330,7 @@
      <widget class="QComboBox" name="searchSortComboBox">
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>540</x>
         <y>230</y>
         <width>111</width>
         <height>31</height>
@@ -371,7 +371,7 @@
      <widget class="QToolButton" name="searchAscPushButton">
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>660</x>
         <y>230</y>
         <width>26</width>
         <height>31</height>
@@ -390,7 +390,7 @@
      <widget class="QToolButton" name="searchDescPushButton">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>690</x>
         <y>230</y>
         <width>26</width>
         <height>31</height>
@@ -433,7 +433,7 @@
      <widget class="QLabel" name="totalStudent">
       <property name="geometry">
        <rect>
-        <x>280</x>
+        <x>90</x>
         <y>240</y>
         <width>151</width>
         <height>20</height>
@@ -464,7 +464,7 @@
        </font>
       </property>
       <property name="text">
-       <string>학생 등록 삭제 수정</string>
+       <string>학생 조회 등록 삭제 </string>
       </property>
      </widget>
      <widget class="QPushButton" name="clearStudentTextPushButton">
@@ -540,7 +540,7 @@
     </widget>
     <widget class="QWidget" name="addCourse">
      <attribute name="title">
-      <string>과목 추가 삭제  및 학점 등록</string>
+      <string>과목 추가 삭제  학점 등록</string>
      </attribute>
      <widget class="QFrame" name="addCourseFrame">
       <property name="geometry">
@@ -679,7 +679,7 @@
         </rect>
        </property>
       </widget>
-      <widget class="QComboBox" name="courseNameComboBox">
+      <widget class="QComboBox" name="courseCourseNameComboBox">
        <property name="enabled">
         <bool>true</bool>
        </property>
@@ -948,7 +948,7 @@
        </font>
       </property>
       <property name="text">
-       <string>과목 추가 삭제  및 학점 등록</string>
+       <string>과목 추가 삭제 학점 등록</string>
       </property>
      </widget>
      <widget class="QPushButton" name="deleteCoursePushButton">

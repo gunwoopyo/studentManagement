@@ -1,8 +1,8 @@
 #ifndef MANAGEMENT_H
 #define MANAGEMENT_H
 #include <QString>
-
 #include "Student.h"
+
 class Management {
 public:
     static Student* manageHead;

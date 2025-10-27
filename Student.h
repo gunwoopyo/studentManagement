@@ -2,6 +2,7 @@
 #define STUDENT_H
 #include <QString>
 #include "Course.h"
+
 class Student {
 private:
     int studentID;
@@ -35,8 +36,8 @@ public:
     double getGPA() {
         return GPA;
     }
-    void setStudentID(int stnID) {
-        this->studentID = stnID;
+    void setStudentID(int studentID) {
+        this->studentID = studentID;
     }
     void setName(QString name) {
         this->name = name;

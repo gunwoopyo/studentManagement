@@ -61,7 +61,7 @@ public:
     QComboBox *courseYearComboBox;
     QLabel *courseName;
     QLineEdit *courseStudentNameText;
-    QComboBox *courseNameComboBox;
+    QComboBox *courseCourseNameComboBox;
     QLabel *courseCourseName;
     QLabel *courseMajor;
     QComboBox *courseMajorComboBox;
@@ -187,21 +187,21 @@ public:
         searchSortComboBox->addItem(QString());
         searchSortComboBox->addItem(QString());
         searchSortComboBox->setObjectName("searchSortComboBox");
-        searchSortComboBox->setGeometry(QRect(90, 230, 111, 31));
+        searchSortComboBox->setGeometry(QRect(540, 230, 111, 31));
         QFont font4;
         font4.setPointSize(10);
         font4.setBold(false);
         searchSortComboBox->setFont(font4);
         searchAscPushButton = new QToolButton(search);
         searchAscPushButton->setObjectName("searchAscPushButton");
-        searchAscPushButton->setGeometry(QRect(210, 230, 26, 31));
+        searchAscPushButton->setGeometry(QRect(660, 230, 26, 31));
         QFont font5;
         font5.setPointSize(13);
         font5.setBold(true);
         searchAscPushButton->setFont(font5);
         searchDescPushButton = new QToolButton(search);
         searchDescPushButton->setObjectName("searchDescPushButton");
-        searchDescPushButton->setGeometry(QRect(240, 230, 26, 31));
+        searchDescPushButton->setGeometry(QRect(690, 230, 26, 31));
         searchDescPushButton->setFont(font5);
         deleteStudentPushButton = new QPushButton(search);
         deleteStudentPushButton->setObjectName("deleteStudentPushButton");
@@ -212,7 +212,7 @@ public:
 "}"));
         totalStudent = new QLabel(search);
         totalStudent->setObjectName("totalStudent");
-        totalStudent->setGeometry(QRect(280, 240, 151, 20));
+        totalStudent->setGeometry(QRect(90, 240, 151, 20));
         totalStudent->setFont(font);
         label = new QLabel(search);
         label->setObjectName("label");
@@ -243,7 +243,7 @@ public:
 "    background-color: #e0e0e0;\n"
 "}"));
         tabWidget->addTab(search, QString());
-        tabWidget->setTabText(tabWidget->indexOf(search), QString::fromUtf8("\355\225\231\354\203\235 \353\223\261\353\241\235 \354\202\255\354\240\234 \354\210\230\354\240\225"));
+        tabWidget->setTabText(tabWidget->indexOf(search), QString::fromUtf8("\355\225\231\354\203\235 \354\241\260\355\232\214 \353\223\261\353\241\235 \354\202\255\354\240\234 "));
         addCourse = new QWidget();
         addCourse->setObjectName("addCourse");
         addCourseFrame = new QFrame(addCourse);
@@ -282,11 +282,11 @@ public:
         courseStudentNameText = new QLineEdit(addCourseFrame);
         courseStudentNameText->setObjectName("courseStudentNameText");
         courseStudentNameText->setGeometry(QRect(330, 20, 101, 31));
-        courseNameComboBox = new QComboBox(addCourseFrame);
-        courseNameComboBox->addItem(QString());
-        courseNameComboBox->setObjectName("courseNameComboBox");
-        courseNameComboBox->setEnabled(true);
-        courseNameComboBox->setGeometry(QRect(330, 70, 101, 31));
+        courseCourseNameComboBox = new QComboBox(addCourseFrame);
+        courseCourseNameComboBox->addItem(QString());
+        courseCourseNameComboBox->setObjectName("courseCourseNameComboBox");
+        courseCourseNameComboBox->setEnabled(true);
+        courseCourseNameComboBox->setGeometry(QRect(330, 70, 101, 31));
         courseCourseName = new QLabel(addCourseFrame);
         courseCourseName->setObjectName("courseCourseName");
         courseCourseName->setGeometry(QRect(260, 80, 61, 20));
@@ -455,7 +455,7 @@ public:
         searchDescPushButton->setText(QCoreApplication::translate("MainWindow", "\342\206\223", nullptr));
         deleteStudentPushButton->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\203\235 \354\202\255\354\240\234", nullptr));
         totalStudent->setText(QString());
-        label->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\203\235 \353\223\261\353\241\235 \354\202\255\354\240\234 \354\210\230\354\240\225", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\203\235 \354\241\260\355\232\214 \353\223\261\353\241\235 \354\202\255\354\240\234 ", nullptr));
         clearStudentTextPushButton->setText(QCoreApplication::translate("MainWindow", "\354\236\205\353\240\245 \354\264\210\352\270\260\355\231\224", nullptr));
         searchStudentPushButton->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\203\235 \354\241\260\355\232\214", nullptr));
         searchAllStudentButton->setText(QCoreApplication::translate("MainWindow", "\354\240\204\354\262\264 \354\241\260\355\232\214", nullptr));
@@ -470,7 +470,7 @@ public:
         courseYearComboBox->setItemText(6, QCoreApplication::translate("MainWindow", "6", nullptr));
 
         courseName->setText(QCoreApplication::translate("MainWindow", "\354\235\264\353\246\204", nullptr));
-        courseNameComboBox->setItemText(0, QString());
+        courseCourseNameComboBox->setItemText(0, QString());
 
         courseCourseName->setText(QCoreApplication::translate("MainWindow", "\354\210\230\352\260\225 \352\263\274\353\252\251", nullptr));
         courseMajor->setText(QCoreApplication::translate("MainWindow", "\354\240\204\352\263\265", nullptr));
@@ -495,7 +495,7 @@ public:
         courseSearchPushButton->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\203\235 \354\241\260\355\232\214", nullptr));
         courseAllSearchPushButton->setText(QCoreApplication::translate("MainWindow", "\354\240\204\354\262\264 \354\241\260\355\232\214", nullptr));
         clearCourseTextPushButton->setText(QCoreApplication::translate("MainWindow", "\354\236\205\353\240\245 \354\264\210\352\270\260\355\231\224", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "\352\263\274\353\252\251 \354\266\224\352\260\200 \354\202\255\354\240\234  \353\260\217 \355\225\231\354\240\220 \353\223\261\353\241\235", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "\352\263\274\353\252\251 \354\266\224\352\260\200 \354\202\255\354\240\234 \355\225\231\354\240\220 \353\223\261\353\241\235", nullptr));
         deleteCoursePushButton->setText(QCoreApplication::translate("MainWindow", "\352\263\274\353\252\251 \354\202\255\354\240\234", nullptr));
         courseGradeComboBox->setItemText(0, QString());
         courseGradeComboBox->setItemText(1, QCoreApplication::translate("MainWindow", "A+", nullptr));
@@ -508,7 +508,7 @@ public:
 
         courseGradePushButton->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\240\220 \353\223\261\353\241\235", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\240\220", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(addCourse), QCoreApplication::translate("MainWindow", "\352\263\274\353\252\251 \354\266\224\352\260\200 \354\202\255\354\240\234  \353\260\217 \355\225\231\354\240\220 \353\223\261\353\241\235", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(addCourse), QCoreApplication::translate("MainWindow", "\352\263\274\353\252\251 \354\266\224\352\260\200 \354\202\255\354\240\234  \355\225\231\354\240\220 \353\223\261\353\241\235", nullptr));
         label_9->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\203\235 \352\264\200\353\246\254 \355\224\204\353\241\234\352\267\270\353\236\250", nullptr));
     } // retranslateUi
 

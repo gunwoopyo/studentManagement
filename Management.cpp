@@ -48,8 +48,8 @@ void Management::insertStudent(int studentID, QString name, QString year, QStrin
         currentStudent->studentNext = newStudent;
         newStudent->studentPrev = currentStudent;
     }
-    debugInsertList();
 }
+//debugInsertList();
 void Management::insertStudent(int studentID, QString name, QString major, QString year, double GPA) {
     Student* newStudent = new Student(studentID, name, major, year, GPA);
     if (manageHead == nullptr) {
