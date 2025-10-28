@@ -4,39 +4,25 @@
 #include <QSqlError>
 #include <QDebug>
 
-
 Student* Management::manageHead = nullptr;
-
-// void Management::deleteCourseDB(int studentID, QString courseName) {
-//     QSqlQuery query;
-//     query.prepare("DELETE FROM enrollment WHERE studentID = :id AND courseName = :courseName;");
-//     query.bindValue(":id", studentID);
-//     query.bindValue(":courseName", courseName);
-
-//     if (!query.exec()) {
-//         qDebug() << "과목 삭제 실패:" << query.lastError().text();
-//         }
-// }
-
-
-
-
-
 
 bool Management::checkCourseName(Student* stn, QString courseName) {
     Course* currentCourse = stn->courseList;
+
     while(currentCourse != nullptr) {
         if(currentCourse->getCourseName() == courseName) {
             return true;
         }
         currentCourse = currentCourse->courseNext;
     }
+
     return false;
 }
 
 
 void Management::insertStudent(int studentID, QString name, QString year, QString major) {
     Student* newStudent = new Student(studentID, name, year, major);
+
     if (manageHead == nullptr) {
         manageHead = newStudent;
     }
@@ -45,13 +31,16 @@ void Management::insertStudent(int studentID, QString name, QString year, QStrin
         while (currentStudent->studentNext != nullptr) {
             currentStudent = currentStudent->studentNext;
         }
+
         currentStudent->studentNext = newStudent;
         newStudent->studentPrev = currentStudent;
     }
 }
+
 //debugInsertList();
 void Management::insertStudent(int studentID, QString name, QString major, QString year, double GPA) {
     Student* newStudent = new Student(studentID, name, major, year, GPA);
+
     if (manageHead == nullptr) {
         manageHead = newStudent;
     }
@@ -63,17 +52,18 @@ void Management::insertStudent(int studentID, QString name, QString major, QStri
         currentStudent->studentNext = newStudent;
         newStudent->studentPrev = currentStudent;
     }
+
     newStudent->SetGPA(GPA);
 }
 
 void Management::deleteStudentDB(int studentID) {
     QSqlQuery query;
-    query.prepare("DELETE FROM student WHERE studentID = :id;");
-    query.bindValue(":id", studentID);
+    query.prepare("DELETE FROM student WHERE studentID = :studentID;");
+    query.bindValue(":studentID", studentID);
     query.exec();
 
-    query.prepare("DELETE FROM enrollment WHERE studentID = :id;");
-    query.bindValue(":id", studentID);
+    query.prepare("DELETE FROM enrollment WHERE studentID = :studentID;");
+    query.bindValue(":studentID", studentID);
     query.exec();
 }
 
@@ -105,8 +95,6 @@ void Management::deleteStudent(int studentID){
         }
         currentStudent = currentStudent->studentNext;
     }
-
-
 }
 
 
@@ -127,10 +115,12 @@ void Management::addCourse(Student* student, QString courseName) {
         newCourse->coursePrev = currentCourse;
     }
 }
+
+
 void Management::deleteCourseDB(int studentID, QString courseName) {
     QSqlQuery query;
-    query.prepare("DELETE FROM enrollment WHERE studentID = :id AND courseName = :courseName;");
-    query.bindValue(":id", studentID);
+    query.prepare("DELETE FROM enrollment WHERE studentID = :studentID AND courseName = :courseName;");
+    query.bindValue(":studentID", studentID);
     query.bindValue(":courseName", courseName);
     query.exec();
 }

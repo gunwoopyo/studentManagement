@@ -8,19 +8,20 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("localhost");
-    db.setDatabaseName("student_db");
-    db.setUserName("gunwoopyo");
-    db.setPassword("rjsdn2939");
-    db.setPort(3306);
-    db.open();
+    QApplication application(argc, argv);
+    QSqlDatabase DB = QSqlDatabase::addDatabase("QMYSQL");
+    DB.setHostName("localhost");
+    DB.setDatabaseName("student_db");
+    DB.setUserName("gunwoopyo");
+    DB.setPassword("rjsdn2939");
+    DB.setPort(3306);
+    DB.open();
 
     Management* manager= new Management();
 
     QSqlQuery studentQuery("SELECT studentID, name, year, major, GPA FROM student;");
     while(studentQuery.next()) {
+
         int studentID = studentQuery.value("studentID").toInt();
         QString name = studentQuery.value("name").toString();
         QString year = studentQuery.value("year").toString();
@@ -34,6 +35,7 @@ int main(int argc, char *argv[])
 
     QSqlQuery courseQuery("SELECT studentID, courseName, grade FROM enrollment");
     while (courseQuery.next()) {
+
         int studentID = courseQuery.value("studentID").toInt();
         QString courseName = courseQuery.value("courseName").toString();
         QString grade = courseQuery.value("grade").toString();
@@ -46,5 +48,5 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
     delete manager;
-    return a.exec();
+    return application.exec();
 }

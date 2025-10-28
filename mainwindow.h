@@ -25,57 +25,43 @@ private:
     QString courseTableCourseName;
 private slots:
 public slots:
-
-    void showMessegeAndClear(const QString& title, const QString& message, const QString& target);
     void onMajorChanged(const QString &major);  // 전공 변경 슬롯
     void onTabChanged(int index);  // 탭 변경 시 호출될 슬롯
-    void totalStudentCount();
+    void showMessegeAndClear(const QString& title, const QString& message, const QString& target);
 
-    void setCourseInfo(int& studentID, QString& name, QString& year, QString& major, QString& courseName);
+
     void setStudentInfo(int& studentID, QString& name, QString& year, QString& major);
-
     void on_searchStudentIDTextEntered();              // 학번 입력
     void on_searchNameTextEntered();                   // 이름 입력
     void on_clearStudentFieldPushButton_clicked();     // 입력 초기화 버튼
     void clearStudentField();                          // 입력값 초기화
-
     void on_searchStudentPushButton_clicked();          // 학생 검색 버튼
     void searchStudent(int stnID, QString name, QString year, QString major);   // 학생 검색 테이블
+    void insertStudentTableRow(Student* student, int row);
     void on_searchAllStudentButton_clicked();           // 학생 전체 조회 버튼
-
-     void on_registrationStudentPushButton_clicked();    // 학생 등록 버튼
+    void on_registrationStudentPushButton_clicked();    // 학생 등록 버튼
     void on_studentTable_cellClicked(int row);          // 학생 삭제 셀 클릭
     void on_deleteStudentPushButton_clicked();          // 학생 삭제 버튼
-    void studentTable(Student* student);    // 학생 조회 테이블
-    void applyStudentTableRow(QTableWidget* studentTable, int row, Student* currentStudent);   // 학생테이블 행 삽입
+    void studentTable(Student* singleStduent = nullptr);    // 학생 조회 테이블
     void applyStudentTableRowColors(QTableWidget* studentTable);     // 학생 테이블 행 색 적용
+    void totalStudentCount();   // 총 등록 학생 수
 
 
-
-
-
-
-    void searchStudent(int studentID, QString name, QString year, QString major, QString  courseName);  // 학생 검색 테이블
-
-
-    void courseTable(Student* student);
-    void courseAllTable();
-    void applyCourseTableRowColors(QTableWidget* courseTable);
-
-
-
+    void setCourseInfo(int& studentID, QString& name, QString& year, QString& major, QString& courseName);
     void on_courseStudentIDTextEntered();               // 학번 입력
     void on_courseNameTextEntered();                    // 이름 입력
-    void on_clearCourseTextPushButton_clicked();        // 입력 초기화 버튼
+    void on_clearCourseFieldPushButton_clicked();       // 입력 초기화 버튼
+    void clearCourseField();                            // 입력값 초기화
+    void setCourseFieldEnabled(bool enabled);           // 입력값 필드 비활성화
     void on_courseSearchPushButton_clicked();           // 학생 조회 버튼
+    void searchStudent(int studentID, QString name, QString year, QString major, QString  courseName);  // 학생 검색 테이블
     void on_courseAllSearchPushButton_clicked();        // 학생 전체 조회 버튼
     void on_courseAddPushButton_clicked();              // 과목 추가 버튼
-    void on_courseTable_cellClicked(int row);           // 과목 셀 클릭
+    void on_courseTable_cellClicked(int row);           // 과목 삭제 셀 클릭
     void on_deleteCoursePushButton_clicked();           // 과목 삭제 버튼
     void on_courseGradePushButton_clicked();            // 학점 등록 버튼
-    void clearCourseField();
-    void setCourseFieldEnabled(bool enabled);
-
+    void applyCourseTableRowColors(QTableWidget* courseTable);   // 과목 테이블 행 색 적용
+    void courseTable(Student* singleStduent = nullptr); // 과목 전체 조회 or 추가, 삭제, 등록  테이블
 
 
     void on_searchAscPushButton_clicked();

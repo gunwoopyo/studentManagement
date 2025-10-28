@@ -50,7 +50,7 @@ public:
     QPushButton *deleteStudentPushButton;
     QLabel *totalStudent;
     QLabel *label;
-    QPushButton *clearStudentTextPushButton;
+    QPushButton *clearStudentFieldPushButton;
     QPushButton *searchStudentPushButton;
     QPushButton *searchAllStudentButton;
     QWidget *addCourse;
@@ -69,7 +69,7 @@ public:
     QTableWidget *courseTable;
     QPushButton *courseSearchPushButton;
     QPushButton *courseAllSearchPushButton;
-    QPushButton *clearCourseTextPushButton;
+    QPushButton *clearCourseFieldPushButton;
     QLabel *label_2;
     QPushButton *deleteCoursePushButton;
     QComboBox *courseGradeComboBox;
@@ -102,7 +102,7 @@ public:
         search->setObjectName("search");
         searchFrame = new QFrame(search);
         searchFrame->setObjectName("searchFrame");
-        searchFrame->setGeometry(QRect(50, 80, 821, 81));
+        searchFrame->setGeometry(QRect(50, 80, 821, 91));
         searchFrame->setFrameShape(QFrame::Shape::StyledPanel);
         searchFrame->setFrameShadow(QFrame::Shadow::Plain);
         searchStudentIDText = new QLineEdit(searchFrame);
@@ -149,7 +149,7 @@ public:
         searchStudentName->setFont(font1);
         registrationStudentPushButton = new QPushButton(searchFrame);
         registrationStudentPushButton->setObjectName("registrationStudentPushButton");
-        registrationStudentPushButton->setGeometry(QRect(730, 20, 71, 41));
+        registrationStudentPushButton->setGeometry(QRect(730, 20, 71, 51));
         QFont font2;
         font2.setPointSize(11);
         font2.setBold(false);
@@ -178,7 +178,7 @@ public:
         __qtablewidgetitem4->setFont(font3);
         searchTable->setHorizontalHeaderItem(4, __qtablewidgetitem4);
         searchTable->setObjectName("searchTable");
-        searchTable->setGeometry(QRect(90, 270, 741, 301));
+        searchTable->setGeometry(QRect(90, 270, 731, 301));
         searchTable->horizontalHeader()->setDefaultSectionSize(140);
         searchSortComboBox = new QComboBox(search);
         searchSortComboBox->addItem(QString());
@@ -221,11 +221,11 @@ public:
         font6.setPointSize(14);
         font6.setBold(true);
         label->setFont(font6);
-        clearStudentTextPushButton = new QPushButton(search);
-        clearStudentTextPushButton->setObjectName("clearStudentTextPushButton");
-        clearStudentTextPushButton->setGeometry(QRect(610, 40, 81, 31));
-        clearStudentTextPushButton->setFont(font2);
-        clearStudentTextPushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        clearStudentFieldPushButton = new QPushButton(search);
+        clearStudentFieldPushButton->setObjectName("clearStudentFieldPushButton");
+        clearStudentFieldPushButton->setGeometry(QRect(610, 40, 81, 31));
+        clearStudentFieldPushButton->setFont(font2);
+        clearStudentFieldPushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: #e0e0e0;\n"
 "}"));
         searchStudentPushButton = new QPushButton(search);
@@ -348,11 +348,11 @@ public:
         courseAllSearchPushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: #e0e0e0;\n"
 "}"));
-        clearCourseTextPushButton = new QPushButton(addCourse);
-        clearCourseTextPushButton->setObjectName("clearCourseTextPushButton");
-        clearCourseTextPushButton->setGeometry(QRect(610, 40, 81, 31));
-        clearCourseTextPushButton->setFont(font3);
-        clearCourseTextPushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        clearCourseFieldPushButton = new QPushButton(addCourse);
+        clearCourseFieldPushButton->setObjectName("clearCourseFieldPushButton");
+        clearCourseFieldPushButton->setGeometry(QRect(610, 40, 81, 31));
+        clearCourseFieldPushButton->setFont(font3);
+        clearCourseFieldPushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: #e0e0e0;\n"
 "}"));
         label_2 = new QLabel(addCourse);
@@ -408,7 +408,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -456,7 +456,7 @@ public:
         deleteStudentPushButton->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\203\235 \354\202\255\354\240\234", nullptr));
         totalStudent->setText(QString());
         label->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\203\235 \354\241\260\355\232\214 \353\223\261\353\241\235 \354\202\255\354\240\234 ", nullptr));
-        clearStudentTextPushButton->setText(QCoreApplication::translate("MainWindow", "\354\236\205\353\240\245 \354\264\210\352\270\260\355\231\224", nullptr));
+        clearStudentFieldPushButton->setText(QCoreApplication::translate("MainWindow", "\354\236\205\353\240\245 \354\264\210\352\270\260\355\231\224", nullptr));
         searchStudentPushButton->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\203\235 \354\241\260\355\232\214", nullptr));
         searchAllStudentButton->setText(QCoreApplication::translate("MainWindow", "\354\240\204\354\262\264 \354\241\260\355\232\214", nullptr));
         courseStudentID->setText(QCoreApplication::translate("MainWindow", "\355\225\231\353\262\210", nullptr));
@@ -494,7 +494,7 @@ public:
         ___qtablewidgetitem10->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\240\220", nullptr));
         courseSearchPushButton->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\203\235 \354\241\260\355\232\214", nullptr));
         courseAllSearchPushButton->setText(QCoreApplication::translate("MainWindow", "\354\240\204\354\262\264 \354\241\260\355\232\214", nullptr));
-        clearCourseTextPushButton->setText(QCoreApplication::translate("MainWindow", "\354\236\205\353\240\245 \354\264\210\352\270\260\355\231\224", nullptr));
+        clearCourseFieldPushButton->setText(QCoreApplication::translate("MainWindow", "\354\236\205\353\240\245 \354\264\210\352\270\260\355\231\224", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "\352\263\274\353\252\251 \354\266\224\352\260\200 \354\202\255\354\240\234 \355\225\231\354\240\220 \353\223\261\353\241\235", nullptr));
         deleteCoursePushButton->setText(QCoreApplication::translate("MainWindow", "\352\263\274\353\252\251 \354\202\255\354\240\234", nullptr));
         courseGradeComboBox->setItemText(0, QString());

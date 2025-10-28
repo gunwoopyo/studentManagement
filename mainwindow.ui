@@ -41,7 +41,7 @@
      <enum>QTabWidget::TabShape::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="tabsClosable">
      <bool>false</bool>
@@ -59,7 +59,7 @@
         <x>50</x>
         <y>80</y>
         <width>821</width>
-        <height>81</height>
+        <height>91</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -245,7 +245,7 @@
          <x>730</x>
          <y>20</y>
          <width>71</width>
-         <height>41</height>
+         <height>51</height>
         </rect>
        </property>
        <property name="font">
@@ -269,7 +269,7 @@
        <rect>
         <x>90</x>
         <y>270</y>
-        <width>741</width>
+        <width>731</width>
         <height>301</height>
        </rect>
       </property>
@@ -467,7 +467,7 @@
        <string>학생 조회 등록 삭제 </string>
       </property>
      </widget>
-     <widget class="QPushButton" name="clearStudentTextPushButton">
+     <widget class="QPushButton" name="clearStudentFieldPushButton">
       <property name="geometry">
        <rect>
         <x>610</x>
@@ -909,7 +909,7 @@
        <string>전체 조회</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="clearCourseTextPushButton">
+     <widget class="QPushButton" name="clearCourseFieldPushButton">
       <property name="geometry">
        <rect>
         <x>610</x>
