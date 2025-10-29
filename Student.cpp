@@ -38,7 +38,6 @@ double Student::calculateGPA() {
         currentCourse = currentCourse->courseNext;
     }
 
-
     if(count == 0) {
         GPA = 0;
     }

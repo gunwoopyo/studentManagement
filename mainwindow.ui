@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>981</width>
-    <height>745</height>
+    <width>1188</width>
+    <height>770</height>
    </rect>
   </property>
   <property name="font">
@@ -25,10 +25,10 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>60</y>
-      <width>931</width>
-      <height>631</height>
+      <x>50</x>
+      <y>50</y>
+      <width>1061</width>
+      <height>661</height>
      </rect>
     </property>
     <property name="tabletTracking">
@@ -56,10 +56,10 @@
      <widget class="QFrame" name="searchFrame">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>80</y>
-        <width>821</width>
-        <height>91</height>
+        <x>100</x>
+        <y>90</y>
+        <width>861</width>
+        <height>81</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -71,10 +71,10 @@
       <widget class="QLineEdit" name="searchStudentIDText">
        <property name="geometry">
         <rect>
-         <x>70</x>
-         <y>30</y>
+         <x>80</x>
+         <y>25</y>
          <width>91</width>
-         <height>26</height>
+         <height>31</height>
         </rect>
        </property>
       </widget>
@@ -82,10 +82,15 @@
        <property name="geometry">
         <rect>
          <x>420</x>
-         <y>30</y>
+         <y>25</y>
          <width>91</width>
-         <height>26</height>
+         <height>31</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
        </property>
        <item>
         <property name="text">
@@ -146,10 +151,15 @@
        <property name="geometry">
         <rect>
          <x>590</x>
-         <y>30</y>
-         <width>101</width>
-         <height>26</height>
+         <y>25</y>
+         <width>111</width>
+         <height>31</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
        </property>
        <item>
         <property name="text">
@@ -194,7 +204,7 @@
       <widget class="QLabel" name="searchStudentID">
        <property name="geometry">
         <rect>
-         <x>30</x>
+         <x>40</x>
          <y>30</y>
          <width>31</width>
          <height>18</height>
@@ -214,9 +224,9 @@
        <property name="geometry">
         <rect>
          <x>250</x>
-         <y>30</y>
+         <y>25</y>
          <width>91</width>
-         <height>26</height>
+         <height>31</height>
         </rect>
        </property>
       </widget>
@@ -242,10 +252,10 @@
       <widget class="QPushButton" name="registrationStudentPushButton">
        <property name="geometry">
         <rect>
-         <x>730</x>
+         <x>760</x>
          <y>20</y>
          <width>71</width>
-         <height>51</height>
+         <height>41</height>
         </rect>
        </property>
        <property name="font">
@@ -267,11 +277,16 @@
      <widget class="QTableWidget" name="searchTable">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>270</y>
-        <width>731</width>
-        <height>301</height>
+        <x>160</x>
+        <y>290</y>
+        <width>741</width>
+        <height>311</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
       </property>
       <attribute name="horizontalHeaderDefaultSectionSize">
        <number>140</number>
@@ -282,7 +297,8 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>11</pointsize>
+         <pointsize>12</pointsize>
+         <bold>true</bold>
         </font>
        </property>
       </column>
@@ -292,7 +308,8 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>11</pointsize>
+         <pointsize>12</pointsize>
+         <bold>true</bold>
         </font>
        </property>
       </column>
@@ -302,7 +319,8 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>11</pointsize>
+         <pointsize>12</pointsize>
+         <bold>true</bold>
         </font>
        </property>
       </column>
@@ -312,7 +330,8 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>11</pointsize>
+         <pointsize>12</pointsize>
+         <bold>true</bold>
         </font>
        </property>
       </column>
@@ -322,7 +341,8 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>11</pointsize>
+         <pointsize>12</pointsize>
+         <bold>true</bold>
         </font>
        </property>
       </column>
@@ -330,15 +350,15 @@
      <widget class="QComboBox" name="searchSortComboBox">
       <property name="geometry">
        <rect>
-        <x>540</x>
-        <y>230</y>
-        <width>111</width>
+        <x>640</x>
+        <y>250</y>
+        <width>91</width>
         <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
+        <pointsize>11</pointsize>
         <bold>false</bold>
        </font>
       </property>
@@ -371,8 +391,8 @@
      <widget class="QToolButton" name="searchAscPushButton">
       <property name="geometry">
        <rect>
-        <x>660</x>
-        <y>230</y>
+        <x>740</x>
+        <y>250</y>
         <width>26</width>
         <height>31</height>
        </rect>
@@ -390,8 +410,8 @@
      <widget class="QToolButton" name="searchDescPushButton">
       <property name="geometry">
        <rect>
-        <x>690</x>
-        <y>230</y>
+        <x>770</x>
+        <y>250</y>
         <width>26</width>
         <height>31</height>
        </rect>
@@ -409,8 +429,8 @@
      <widget class="QPushButton" name="deleteStudentPushButton">
       <property name="geometry">
        <rect>
-        <x>740</x>
-        <y>230</y>
+        <x>810</x>
+        <y>250</y>
         <width>91</width>
         <height>31</height>
        </rect>
@@ -433,15 +453,15 @@
      <widget class="QLabel" name="totalStudent">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>240</y>
+        <x>160</x>
+        <y>260</y>
         <width>151</width>
         <height>20</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
+        <pointsize>11</pointsize>
        </font>
       </property>
       <property name="text">
@@ -451,15 +471,15 @@
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>100</x>
         <y>30</y>
         <width>171</width>
-        <height>31</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>14</pointsize>
+        <pointsize>16</pointsize>
         <bold>true</bold>
        </font>
       </property>
@@ -470,8 +490,8 @@
      <widget class="QPushButton" name="clearStudentFieldPushButton">
       <property name="geometry">
        <rect>
-        <x>610</x>
-        <y>40</y>
+        <x>700</x>
+        <y>50</y>
         <width>81</width>
         <height>31</height>
        </rect>
@@ -494,8 +514,8 @@
      <widget class="QPushButton" name="searchStudentPushButton">
       <property name="geometry">
        <rect>
-        <x>700</x>
-        <y>40</y>
+        <x>790</x>
+        <y>50</y>
         <width>81</width>
         <height>31</height>
        </rect>
@@ -517,8 +537,8 @@
      <widget class="QPushButton" name="searchAllStudentButton">
       <property name="geometry">
        <rect>
-        <x>790</x>
-        <y>40</y>
+        <x>880</x>
+        <y>50</y>
         <width>81</width>
         <height>31</height>
        </rect>
@@ -545,9 +565,9 @@
      <widget class="QFrame" name="addCourseFrame">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>80</y>
-        <width>821</width>
+        <x>100</x>
+        <y>90</y>
+        <width>861</width>
         <height>121</height>
        </rect>
       </property>
@@ -563,9 +583,9 @@
       <widget class="QLineEdit" name="courseStudentIDText">
        <property name="geometry">
         <rect>
-         <x>90</x>
+         <x>100</x>
          <y>20</y>
-         <width>101</width>
+         <width>111</width>
          <height>31</height>
         </rect>
        </property>
@@ -573,7 +593,7 @@
       <widget class="QLabel" name="courseStudentID">
        <property name="geometry">
         <rect>
-         <x>50</x>
+         <x>60</x>
          <y>30</y>
          <width>31</width>
          <height>18</height>
@@ -591,7 +611,7 @@
       <widget class="QLabel" name="courseYear">
        <property name="geometry">
         <rect>
-         <x>520</x>
+         <x>540</x>
          <y>30</y>
          <width>31</width>
          <height>18</height>
@@ -609,11 +629,16 @@
       <widget class="QComboBox" name="courseYearComboBox">
        <property name="geometry">
         <rect>
-         <x>560</x>
+         <x>580</x>
          <y>20</y>
-         <width>101</width>
+         <width>111</width>
          <height>31</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
        </property>
        <item>
         <property name="text">
@@ -654,7 +679,7 @@
       <widget class="QLabel" name="courseName">
        <property name="geometry">
         <rect>
-         <x>290</x>
+         <x>320</x>
          <y>30</y>
          <width>31</width>
          <height>18</height>
@@ -672,9 +697,9 @@
       <widget class="QLineEdit" name="courseStudentNameText">
        <property name="geometry">
         <rect>
-         <x>330</x>
+         <x>360</x>
          <y>20</y>
-         <width>101</width>
+         <width>111</width>
          <height>31</height>
         </rect>
        </property>
@@ -685,11 +710,16 @@
        </property>
        <property name="geometry">
         <rect>
-         <x>330</x>
+         <x>360</x>
          <y>70</y>
-         <width>101</width>
+         <width>111</width>
          <height>31</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
        </property>
        <item>
         <property name="text">
@@ -700,7 +730,7 @@
       <widget class="QLabel" name="courseCourseName">
        <property name="geometry">
         <rect>
-         <x>260</x>
+         <x>290</x>
          <y>80</y>
          <width>61</width>
          <height>20</height>
@@ -718,7 +748,7 @@
       <widget class="QLabel" name="courseMajor">
        <property name="geometry">
         <rect>
-         <x>50</x>
+         <x>60</x>
          <y>80</y>
          <width>31</width>
          <height>18</height>
@@ -739,11 +769,16 @@
        </property>
        <property name="geometry">
         <rect>
-         <x>90</x>
+         <x>100</x>
          <y>70</y>
-         <width>101</width>
+         <width>111</width>
          <height>31</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
        </property>
        <item>
         <property name="text">
@@ -769,7 +804,7 @@
       <widget class="QPushButton" name="courseAddPushButton">
        <property name="geometry">
         <rect>
-         <x>710</x>
+         <x>760</x>
          <y>30</y>
          <width>71</width>
          <height>51</height>
@@ -793,11 +828,16 @@
      <widget class="QTableWidget" name="courseTable">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>280</y>
+        <x>150</x>
+        <y>290</y>
         <width>761</width>
-        <height>291</height>
+        <height>311</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
       </property>
       <attribute name="horizontalHeaderDefaultSectionSize">
        <number>120</number>
@@ -808,7 +848,8 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>11</pointsize>
+         <pointsize>12</pointsize>
+         <bold>true</bold>
         </font>
        </property>
       </column>
@@ -818,7 +859,8 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>11</pointsize>
+         <pointsize>12</pointsize>
+         <bold>true</bold>
         </font>
        </property>
       </column>
@@ -828,7 +870,8 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>11</pointsize>
+         <pointsize>12</pointsize>
+         <bold>true</bold>
         </font>
        </property>
       </column>
@@ -838,7 +881,8 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>11</pointsize>
+         <pointsize>12</pointsize>
+         <bold>true</bold>
         </font>
        </property>
       </column>
@@ -848,7 +892,8 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>11</pointsize>
+         <pointsize>12</pointsize>
+         <bold>true</bold>
         </font>
        </property>
       </column>
@@ -858,7 +903,8 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>11</pointsize>
+         <pointsize>12</pointsize>
+         <bold>true</bold>
         </font>
        </property>
       </column>
@@ -866,8 +912,8 @@
      <widget class="QPushButton" name="courseSearchPushButton">
       <property name="geometry">
        <rect>
-        <x>700</x>
-        <y>40</y>
+        <x>790</x>
+        <y>50</y>
         <width>81</width>
         <height>31</height>
        </rect>
@@ -889,8 +935,8 @@
      <widget class="QPushButton" name="courseAllSearchPushButton">
       <property name="geometry">
        <rect>
-        <x>790</x>
-        <y>40</y>
+        <x>880</x>
+        <y>50</y>
         <width>81</width>
         <height>31</height>
        </rect>
@@ -912,8 +958,8 @@
      <widget class="QPushButton" name="clearCourseFieldPushButton">
       <property name="geometry">
        <rect>
-        <x>610</x>
-        <y>40</y>
+        <x>700</x>
+        <y>50</y>
         <width>81</width>
         <height>31</height>
        </rect>
@@ -935,15 +981,15 @@
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>100</x>
         <y>40</y>
-        <width>231</width>
-        <height>21</height>
+        <width>241</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>14</pointsize>
+        <pointsize>16</pointsize>
         <bold>true</bold>
        </font>
       </property>
@@ -954,8 +1000,8 @@
      <widget class="QPushButton" name="deleteCoursePushButton">
       <property name="geometry">
        <rect>
-        <x>770</x>
-        <y>240</y>
+        <x>830</x>
+        <y>250</y>
         <width>81</width>
         <height>31</height>
        </rect>
@@ -977,15 +1023,15 @@
      <widget class="QComboBox" name="courseGradeComboBox">
       <property name="geometry">
        <rect>
-        <x>590</x>
-        <y>240</y>
+        <x>650</x>
+        <y>250</y>
         <width>81</width>
         <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <pointsize>11</pointsize>
        </font>
       </property>
       <item>
@@ -995,7 +1041,7 @@
       </item>
       <item>
        <property name="text">
-        <string>A+</string>
+        <string notr="true">A+</string>
        </property>
       </item>
       <item>
@@ -1032,8 +1078,8 @@
      <widget class="QPushButton" name="courseGradePushButton">
       <property name="geometry">
        <rect>
-        <x>680</x>
-        <y>240</y>
+        <x>740</x>
+        <y>250</y>
         <width>81</width>
         <height>31</height>
        </rect>
@@ -1055,8 +1101,8 @@
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>550</x>
-        <y>250</y>
+        <x>610</x>
+        <y>260</y>
         <width>31</width>
         <height>18</height>
        </rect>
@@ -1075,7 +1121,7 @@
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>510</x>
       <y>20</y>
       <width>201</width>
       <height>41</height>
@@ -1097,7 +1143,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>981</width>
+     <width>1188</width>
      <height>21</height>
     </rect>
    </property>

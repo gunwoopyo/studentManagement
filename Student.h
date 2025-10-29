@@ -15,7 +15,7 @@ public:
     Student* studentPrev;
     Student* studentNext;
 
-    Student(int ID, QString n, QString y, QString m) : studentID(ID), name(n), year(y), major(m), GPA(0),
+    Student(int ID, QString n, QString y, QString m) :studentID(ID), name(n), year(y), major(m), GPA(0),
         courseList(nullptr), studentPrev(nullptr), studentNext(nullptr) { }
 
     Student(int ID, QString n, QString y, QString m, double G) : studentID(ID), name(n), year(y), major(m), GPA(G),
@@ -36,6 +36,7 @@ public:
     double getGPA() {
         return GPA;
     }
+
     void setStudentID(int studentID) {
         this->studentID = studentID;
     }
@@ -54,7 +55,6 @@ public:
 
     double calculateGPA();
 
-public slots:
 };
-
 #endif // STUDENT_H
+

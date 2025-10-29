@@ -1,13 +1,8 @@
 #include "mainwindow.h"
-#include <QCoreApplication>
 #include <QApplication>
-#include <QtSql/QSqlDatabase>
-#include <QtSql/QSqlError>
-#include <QDebug>
-#include <QSqlQuery>
+#include <QtSql>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     QApplication application(argc, argv);
     QSqlDatabase DB = QSqlDatabase::addDatabase("QMYSQL");
     DB.setHostName("localhost");
@@ -18,35 +13,26 @@ int main(int argc, char *argv[])
     DB.open();
 
     Management* manager= new Management();
-
     QSqlQuery studentQuery("SELECT studentID, name, year, major, GPA FROM student;");
     while(studentQuery.next()) {
-
-        int studentID = studentQuery.value("studentID").toInt();
-        QString name = studentQuery.value("name").toString();
-        QString year = studentQuery.value("year").toString();
-        QString major = studentQuery.value("major").toString();
-        double GPA = studentQuery.value("GPA").toDouble();
-
-        manager->insertStudent(studentID, name, year, major, GPA);
+            manager->insertStudent(
+                studentQuery.value("studentID").toInt(),
+                studentQuery.value("name").toString(),
+                studentQuery.value("year").toString(),
+                studentQuery.value("major").toString(),
+                studentQuery.value("GPA").toDouble());
     }
 
-
-
-    QSqlQuery courseQuery("SELECT studentID, courseName, grade FROM enrollment");
+    QSqlQuery courseQuery("SELECT studentID, courseName, grade FROM enrollment;");
     while (courseQuery.next()) {
-
-        int studentID = courseQuery.value("studentID").toInt();
-        QString courseName = courseQuery.value("courseName").toString();
-        QString grade = courseQuery.value("grade").toString();
-
-        Student* student = manager->createObject(studentID);
-        manager->addCourse(student, courseName);
-        manager->updateGrade(student, courseName, grade);
+            manager->addCourse(
+                manager->createObject(courseQuery.value("studentID").toInt()),
+                courseQuery.value("courseName").toString(),
+                courseQuery.value("grade").toString());
     }
-
     MainWindow w;
     w.show();
     delete manager;
     return application.exec();
 }
+

@@ -17,6 +17,8 @@ public:
     QString getGrade() {
         return grade;
     }
+
+
     void setCourseName(QString course) {
         this->courseName = course;
     }

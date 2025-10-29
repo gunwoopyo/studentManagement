@@ -100,6 +100,45 @@ void Management::deleteStudent(int studentID){
 
 
 
+
+
+void Management::deleteCourseDB(int studentID, QString courseName) {
+    QSqlQuery query;
+    query.prepare("DELETE FROM enrollment WHERE studentID = :studentID AND courseName = :courseName;");
+    query.bindValue(":studentID", studentID);
+    query.bindValue(":courseName", courseName);
+    query.exec();
+}
+
+
+void Management::deleteCourse(Student* student, QString courseName) {
+    Course* currentCourse = student->courseList;
+    while(currentCourse != nullptr) {
+        if(currentCourse->getCourseName() == courseName) {
+            // 헤드포인터가 가리키는 노드가 1개만 남은 경우
+            if(currentCourse->coursePrev == nullptr){
+                if(currentCourse->courseNext == nullptr) {;
+                    student->courseList = nullptr;
+                }
+                else {// 노드가 여러 개일 때 헤드포인터가 가리키는 노드를 지우려 하는 경우
+                    student->courseList = currentCourse->courseNext ;
+                    currentCourse->courseNext->coursePrev = nullptr;
+                }
+            } // 앞뒤로 사이에 낀 노드를 삭제하려는 경우
+            else if (currentCourse->coursePrev != nullptr && currentCourse->courseNext != nullptr) {
+                currentCourse->coursePrev->courseNext = currentCourse->courseNext;
+                currentCourse->courseNext->coursePrev = currentCourse->coursePrev;
+            }
+            else { // 맨 마지막의 노드를 삭제하려는 경우
+                currentCourse->coursePrev->courseNext = nullptr;
+            }
+            delete currentCourse;
+            return;
+        }
+        currentCourse = currentCourse->courseNext;
+    }
+}
+
 void Management::addCourse(Student* student, QString courseName) {
     Course* newCourse = new Course(courseName);   // grade 는 일단 널.
     if(student->courseList == nullptr) {
@@ -116,44 +155,25 @@ void Management::addCourse(Student* student, QString courseName) {
     }
 }
 
-
-void Management::deleteCourseDB(int studentID, QString courseName) {
-    QSqlQuery query;
-    query.prepare("DELETE FROM enrollment WHERE studentID = :studentID AND courseName = :courseName;");
-    query.bindValue(":studentID", studentID);
-    query.bindValue(":courseName", courseName);
-    query.exec();
-}
-
-
-void Management::deleteCourse(Student* student, QString courseName) {
-    Course* currentCourse = student->courseList;
-    while(currentCourse != nullptr) {
-        if(currentCourse->getCourseName() == courseName) {
-            // 지우려는 객체로 진입
-            // 헤드포인터가 가리키는 노드가 1개만 남은 경우
-            if(currentCourse->coursePrev == nullptr){
-                if(currentCourse->courseNext == nullptr) {;
-                    student->courseList = nullptr;
-                }
-                else {  // 노드가 여러 개일 때 헤드포인터가 가리키는 노드를 지우려 하는 경우
-                    student->courseList = currentCourse->courseNext ;
-                    currentCourse->courseNext->coursePrev = nullptr;
-                }
-            }   // 앞뒤로 사이에 낀 노드를 삭제하려는 경우
-            else if (currentCourse->coursePrev != nullptr && currentCourse->courseNext != nullptr) {
-                currentCourse->coursePrev->courseNext = currentCourse->courseNext;
-                currentCourse->courseNext->coursePrev = currentCourse->coursePrev;
-            }
-            else {    // 맨 마지막의 노드를 삭제하려는 경우
-                currentCourse->coursePrev->courseNext = nullptr;
-            }
-            delete currentCourse;
-            return;
-        }
-        currentCourse = currentCourse->courseNext;
+void Management::addCourse(Student* student, QString courseName, QString grade) {
+    Course* newCourse = new Course(courseName);   // grade 는 일단 널.
+    if(student->courseList == nullptr) {
+        student->courseList = newCourse;
+        newCourse->coursePrev = nullptr;
     }
+    else {
+        Course* currentCourse = student->courseList;
+        while(currentCourse->courseNext != nullptr){
+            currentCourse = currentCourse->courseNext;
+        }
+        currentCourse->courseNext = newCourse;
+        newCourse->coursePrev = currentCourse;
+    }
+    newCourse->setGrade(grade);
 }
+
+
+
 
 
 
