@@ -72,6 +72,9 @@ public slots:
     void on_courseGradePushButton_clicked();  //  수강 과목 학점 등록 버튼
     void onMajorChanged(const QString &major);  //  전공에 따른 수강 과목을 콤보박스에 출력하는 함수
     void onTabChanged(int index);  // 탭 변경 시 호출되는 함수
+
+private slots:
+    void on_MainWindow_iconSizeChanged(const QSize &iconSize);
 };
 
 #endif // MAINWINDOW_H

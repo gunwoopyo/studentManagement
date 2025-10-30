@@ -35,6 +35,8 @@ int main(int argc, char *argv[]) {
                         courseQuery.value("courseName").toString(),
                         courseQuery.value("grade").toString());
     }
+
+
     MainWindow w;
     w.show();
     delete manager;

@@ -4,8 +4,6 @@
 #include <QDebug>
 #include <QRegularExpression>
 #include <QMouseEvent>
-#include <QTimer>
-
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -32,6 +30,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->searchStudentNameText->setPlaceholderText("한글 입력(최대 5자리)");
     ui->courseStudentIDText->setPlaceholderText("숫자 입력(최대 4자리)");
     ui->courseStudentNameText->setPlaceholderText("한글 입력(최대 5자리)");
+    // ui->searchTable->verticalHeader()->setVisible(false);
+    // ui->courseTable->verticalHeader()->setVisible(false);
+
 }
 
 
@@ -794,3 +795,9 @@ MainWindow::~MainWindow() {
     delete manager;
     delete ui;
 }
+
+void MainWindow::on_MainWindow_iconSizeChanged(const QSize &iconSize)
+{
+
+}
+
