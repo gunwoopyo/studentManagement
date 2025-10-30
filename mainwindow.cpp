@@ -15,21 +15,23 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->searchTable, &QTableWidget::cellDoubleClicked, this, &MainWindow::onSearchTableDoubleClicked); // searchTable 에서 특정 행 더블 클릭 시 courseTable로 넘어가 학생 정보 출력
     connect(ui->courseMajorComboBox, &QComboBox::currentTextChanged,this, &MainWindow::onMajorChanged); // 수강 과목 페이지에서 전공 바꿀 시 수강 과목 변경 함수
     onMajorChanged(ui->courseMajorComboBox->currentText());
+
     connect(ui->searchStudentIDText, &QLineEdit::editingFinished, this, &MainWindow::on_searchStudentIDTextEntered);  // 학생 등록 페이지 - 학번 입력 시 유효성 검사 함수
     connect(ui->searchStudentNameText, &QLineEdit::editingFinished, this, &MainWindow::on_searchNameTextEntered); // 학생 등록 페이지 - 이름 입력 시 유효성 검사 함수
     connect(ui->searchTable, &QTableWidget::cellClicked, this, &MainWindow::on_studentTable_cellClicked);  // 학생 등록 페이지의 테이블 클릭 함수
     ui->searchTable->setEditTriggers(QAbstractItemView::NoEditTriggers);  // 학생 등록 테이블에서 데이터 수정할 수 X
     ui->searchTable->setSelectionBehavior(QAbstractItemView::SelectRows); // 학생 등록 테이블에서 행 클릭시 셀이 아닌 행 전체 선택
+
     connect(ui->courseStudentIDText, &QLineEdit::editingFinished, this, &MainWindow::on_courseStudentIDTextEntered);  // 과목 페이지 - 학번 입력 시 유효성 검사 함수
     connect(ui->courseStudentNameText, &QLineEdit::editingFinished, this, &MainWindow::on_courseNameTextEntered);  // 과목 페이지 - 이름 입력 시 유효성 검사 함수
     connect(ui->courseTable, &QTableWidget::cellClicked, this, &MainWindow::on_courseTable_cellClicked);  // 과목 페이지의 테이블 클릭 함수
     ui->courseTable->setEditTriggers(QAbstractItemView::NoEditTriggers);    // 과목 테이블에서 데이터 수정할 수 X
     ui->courseTable->setSelectionBehavior(QAbstractItemView::SelectRows);   // 과목 테이블에서 행 클릭스 셀이 아닌 행 전체 선택
 
-    ui->searchStudentIDText->setPlaceholderText("숫자 (최대 4자리)");
-    ui->searchStudentNameText->setPlaceholderText("한글 (최대 5자리)");
-    ui->courseStudentIDText->setPlaceholderText("숫자 (최대 4자리)");
-    ui->courseStudentNameText->setPlaceholderText("한글 (최대 5자리)");
+    ui->searchStudentIDText->setPlaceholderText("숫자 입력(최대 4자리)");
+    ui->searchStudentNameText->setPlaceholderText("한글 입력(최대 5자리)");
+    ui->courseStudentIDText->setPlaceholderText("숫자 입력(최대 4자리)");
+    ui->courseStudentNameText->setPlaceholderText("한글 입력(최대 5자리)");
 }
 
 
@@ -55,6 +57,8 @@ void MainWindow::mousePressEvent(QMouseEvent* event) { // 테이블 클릭 시
 
 void MainWindow::showMessegeAndClear(const QString& title, const QString& message, const QString& clearTargetField) {
     QMessageBox messageBox(this);
+    messageBox.setWindowTitle(title);
+    messageBox.setText(message);
 
     if(title == "성공") {
         messageBox.setIcon(QMessageBox::Information);
@@ -63,13 +67,12 @@ void MainWindow::showMessegeAndClear(const QString& title, const QString& messag
         messageBox.setIcon(QMessageBox::Warning);
     }
 
-    messageBox.setWindowTitle(title);
-    messageBox.setText(message);
+    QRect mainWindowGeometry  = this->frameGeometry();
+    QPoint mainWindowCenter  = mainWindowGeometry.center();
+    QSize messageBoxSize = messageBox.sizeHint();
+    QPoint messageBoxPosition = mainWindowCenter - QPoint(messageBoxSize.width()/2, messageBoxSize.height()/2);
 
-    QRect r = this->frameGeometry();
-    QPoint c = r.center();
-    QSize s = messageBox.sizeHint();
-    messageBox.move(c.x() - s.width()/2, c.y() - s.height()/2);
+    messageBox.move(messageBoxPosition);
     messageBox.exec();
 
     (clearTargetField == "clearStudentField"   ?   clearStudentField()   :   clearCourseField());
