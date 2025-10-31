@@ -25,7 +25,6 @@ int main(int argc, char *argv[]) {
                         studentQuery.value("GPA").toDouble());
     }
 
-
     QSqlQuery courseQuery("SELECT studentID, courseName, grade FROM enrollment;");
     while (courseQuery.next()) {
                 int studentID = courseQuery.value("studentID").toInt();
@@ -35,8 +34,6 @@ int main(int argc, char *argv[]) {
                         courseQuery.value("courseName").toString(),
                         courseQuery.value("grade").toString());
     }
-
-
 
     MainWindow w;
     w.show();

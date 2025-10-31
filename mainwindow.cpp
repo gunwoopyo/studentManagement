@@ -7,8 +7,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
@@ -36,9 +34,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->searchTable->verticalHeader()->setFixedWidth(13);
     ui->courseTable->verticalHeader()->setFixedWidth(13);
-
 }
-
 
 
 void MainWindow::onSearchTableDoubleClicked() {
@@ -60,28 +56,7 @@ void MainWindow::mousePressEvent(QMouseEvent* event) { // 테이블 클릭 시
     QMainWindow::mousePressEvent(event);
 }
 
-void MainWindow::showMessegeAndClear(const QString& title, const QString& message, const QString& clearTargetField) {
-    QMessageBox messageBox(this);
-    messageBox.setWindowTitle(title);
-    messageBox.setText(message);
 
-    if(title == "성공") {
-        messageBox.setIcon(QMessageBox::Information);
-    }
-    else {
-        messageBox.setIcon(QMessageBox::Warning);
-    }
-
-    QRect mainWindowGeometry  = this->frameGeometry();  // 메인윈도우 전체 크기와 위치 반환
-    QPoint mainWindowCenter  = mainWindowGeometry.center();  // 가운데 위치
-    QSize messageBoxSize = messageBox.sizeHint();  // 메시지 박스 크기
-    QPoint messageBoxPosition = mainWindowCenter - QPoint(messageBoxSize.width()/2,  messageBoxSize.height()/2); // 메시지 박스 배치
-
-    messageBox.move(messageBoxPosition);
-    messageBox.exec();
-
-    (clearTargetField == "clearStudentField"   ?   clearStudentField()   :   clearCourseField());
-}
 
 void MainWindow::onTabChanged(int index) {
     switch (index) {
@@ -229,8 +204,6 @@ void MainWindow::on_searchDescPushButton_clicked() {
 }
 
 void MainWindow::bubbleSort(QTableWidget* table, int column, bool ascending) {
-
-
 
     for (int i = 0; i < table->rowCount() - 1; i++) {
         for (int row = 0;  row < table->rowCount() - i - 1;  row++) {  // i는 1씩 증가하니 반복횟수 1씩 줄어듦.
@@ -733,6 +706,29 @@ void MainWindow::clearCourseField() {
     ui->courseTable->clearSelection();
     courseTableStudentID = 0;
     courseTableCourseName = "";
+}
+
+void MainWindow::showMessegeAndClear(const QString& title, const QString& message, const QString& clearTargetField) {
+    QMessageBox messageBox(this);
+    messageBox.setWindowTitle(title);
+    messageBox.setText(message);
+
+    if(title == "성공") {
+        messageBox.setIcon(QMessageBox::Information);
+    }
+    else {
+        messageBox.setIcon(QMessageBox::Warning);
+    }
+
+    QRect mainWindowGeometry  = this->frameGeometry();  // 메인윈도우 전체 크기와 위치 반환
+    QPoint mainWindowCenter  = mainWindowGeometry.center();  // 가운데 위치
+    QSize messageBoxSize = messageBox.sizeHint();  // 메시지 박스 크기
+    QPoint messageBoxPosition = mainWindowCenter - QPoint(messageBoxSize.width()/2,  messageBoxSize.height()/2); // 메시지 박스 배치
+
+    messageBox.move(messageBoxPosition);
+    messageBox.exec();
+
+    (clearTargetField == "clearStudentField"   ?   clearStudentField()   :   clearCourseField());
 }
 
 
