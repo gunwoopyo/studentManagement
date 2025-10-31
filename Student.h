@@ -10,6 +10,7 @@ private:
     QString year;
     QString major;
     double GPA;
+
 public:
     Course* courseList;
     Student* studentPrev;
@@ -49,7 +50,7 @@ public:
     void setYear(QString year) {
         this->year = year;
     }
-    void SetGPA(double GPA) {
+    void setGPA(double GPA) {
         this->GPA = GPA;
     }
 

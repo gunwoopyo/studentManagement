@@ -6,7 +6,6 @@
 int main(int argc, char *argv[]) {
     setenv("QT_QPA_PLATFORM", "xcb", 1);
     QApplication application(argc, argv);
-
     QSqlDatabase DB = QSqlDatabase::addDatabase("QMYSQL");
     DB.setHostName("localhost");
     DB.setDatabaseName("student_db");
@@ -26,6 +25,7 @@ int main(int argc, char *argv[]) {
                         studentQuery.value("GPA").toDouble());
     }
 
+
     QSqlQuery courseQuery("SELECT studentID, courseName, grade FROM enrollment;");
     while (courseQuery.next()) {
                 int studentID = courseQuery.value("studentID").toInt();
@@ -35,6 +35,7 @@ int main(int argc, char *argv[]) {
                         courseQuery.value("courseName").toString(),
                         courseQuery.value("grade").toString());
     }
+
 
 
     MainWindow w;

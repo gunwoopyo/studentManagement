@@ -13,6 +13,7 @@ public:
     void addCourse(Student* student, QString courseName, QString grade);  // 수강 과목 및 학점 동시에 추가하는 함수
     void deleteCourse(Student* student, QString courseName);  // 수강 과목을 삭제하는 함수
     void updateGrade(Student* student, QString courseName, QString grade);  // 수강 과목의 학점을 등록하는 함수
+
     bool checkCourseName(Student* student, QString courseName);  // 특정 학생 객체의 수강 과목을 조회해 존재하는 과목이 있으면 true 리턴
     bool checkStudentID(int studentID);  // 매개변수에 입력한 학생이 존재하면 false 리턴
     void debugInsertList();  // 학생 객체 삽입 or 삭제 시 메모리 주소 디버그

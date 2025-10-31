@@ -53,7 +53,7 @@ void Management::insertStudent(int studentID, QString name, QString major, QStri
         newStudent->studentPrev = currentStudent;
     }
 
-    newStudent->SetGPA(GPA);
+    newStudent->setGPA(GPA);
 }
 
 void Management::deleteStudentDB(int studentID) {

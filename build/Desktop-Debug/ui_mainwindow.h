@@ -91,7 +91,7 @@ public:
         centralwidget->setObjectName("centralwidget");
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName("tabWidget");
-        tabWidget->setGeometry(QRect(50, 20, 1321, 661));
+        tabWidget->setGeometry(QRect(40, 20, 1321, 661));
         tabWidget->setTabletTracking(false);
         tabWidget->setTabPosition(QTabWidget::TabPosition::North);
         tabWidget->setTabShape(QTabWidget::TabShape::Rounded);
@@ -193,7 +193,7 @@ public:
         __qtablewidgetitem4->setFont(font4);
         searchTable->setHorizontalHeaderItem(4, __qtablewidgetitem4);
         searchTable->setObjectName("searchTable");
-        searchTable->setGeometry(QRect(210, 300, 903, 311));
+        searchTable->setGeometry(QRect(210, 300, 916, 311));
         QFont font5;
         font5.setPointSize(12);
         searchTable->setFont(font5);
@@ -205,7 +205,7 @@ public:
         searchSortComboBox->addItem(QString());
         searchSortComboBox->addItem(QString());
         searchSortComboBox->setObjectName("searchSortComboBox");
-        searchSortComboBox->setGeometry(QRect(830, 260, 101, 31));
+        searchSortComboBox->setGeometry(QRect(840, 260, 101, 31));
         sizePolicy.setHeightForWidth(searchSortComboBox->sizePolicy().hasHeightForWidth());
         searchSortComboBox->setSizePolicy(sizePolicy);
         QFont font6;
@@ -214,7 +214,7 @@ public:
         searchSortComboBox->setFont(font6);
         searchAscPushButton = new QToolButton(search);
         searchAscPushButton->setObjectName("searchAscPushButton");
-        searchAscPushButton->setGeometry(QRect(940, 260, 31, 31));
+        searchAscPushButton->setGeometry(QRect(950, 260, 31, 31));
         sizePolicy.setHeightForWidth(searchAscPushButton->sizePolicy().hasHeightForWidth());
         searchAscPushButton->setSizePolicy(sizePolicy);
         QFont font7;
@@ -223,13 +223,13 @@ public:
         searchAscPushButton->setFont(font7);
         searchDescPushButton = new QToolButton(search);
         searchDescPushButton->setObjectName("searchDescPushButton");
-        searchDescPushButton->setGeometry(QRect(980, 260, 31, 31));
+        searchDescPushButton->setGeometry(QRect(990, 260, 31, 31));
         sizePolicy.setHeightForWidth(searchDescPushButton->sizePolicy().hasHeightForWidth());
         searchDescPushButton->setSizePolicy(sizePolicy);
         searchDescPushButton->setFont(font7);
         deleteStudentPushButton = new QPushButton(search);
         deleteStudentPushButton->setObjectName("deleteStudentPushButton");
-        deleteStudentPushButton->setGeometry(QRect(1020, 260, 91, 31));
+        deleteStudentPushButton->setGeometry(QRect(1030, 260, 91, 31));
         sizePolicy.setHeightForWidth(deleteStudentPushButton->sizePolicy().hasHeightForWidth());
         deleteStudentPushButton->setSizePolicy(sizePolicy);
         deleteStudentPushButton->setFont(font3);
@@ -238,7 +238,7 @@ public:
 "}"));
         totalStudent = new QLabel(search);
         totalStudent->setObjectName("totalStudent");
-        totalStudent->setGeometry(QRect(220, 270, 151, 20));
+        totalStudent->setGeometry(QRect(210, 270, 151, 20));
         totalStudent->setFont(font5);
         label = new QLabel(search);
         label->setObjectName("label");
@@ -424,7 +424,7 @@ public:
         __qtablewidgetitem10->setFont(font4);
         courseTable->setHorizontalHeaderItem(5, __qtablewidgetitem10);
         courseTable->setObjectName("courseTable");
-        courseTable->setGeometry(QRect(190, 310, 963, 301));
+        courseTable->setGeometry(QRect(180, 310, 975, 301));
         courseTable->setFont(font5);
         courseTable->horizontalHeader()->setDefaultSectionSize(160);
         tabWidget->addTab(addCourse, QString());

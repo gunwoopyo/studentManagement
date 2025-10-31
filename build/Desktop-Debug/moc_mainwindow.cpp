@@ -65,10 +65,7 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "onMajorChanged",
         "major",
         "onTabChanged",
-        "index",
-        "on_MainWindow_iconSizeChanged",
-        "QSize",
-        "iconSize"
+        "index"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -124,10 +121,6 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         QtMocHelpers::SlotData<void(int)>(25, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::Int, 26 },
         }}),
-        // Slot 'on_MainWindow_iconSizeChanged'
-        QtMocHelpers::SlotData<void(const QSize &)>(27, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 28, 29 },
-        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -173,7 +166,6 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 19: _t->on_courseGradePushButton_clicked(); break;
         case 20: _t->onMajorChanged((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
         case 21: _t->onTabChanged((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
-        case 22: _t->on_MainWindow_iconSizeChanged((*reinterpret_cast<std::add_pointer_t<QSize>>(_a[1]))); break;
         default: ;
         }
     }
@@ -198,14 +190,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 23)
+        if (_id < 22)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 23;
+        _id -= 22;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 23)
+        if (_id < 22)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 23;
+        _id -= 22;
     }
     return _id;
 }

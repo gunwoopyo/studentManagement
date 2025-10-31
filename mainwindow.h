@@ -43,7 +43,7 @@ public:
     void applyCourseTableRowColors(QTableWidget* courseTable);  //  수강 과목 courseTable 행의 컬러 적용 함수
     void searchStudent(int studentID, QString name, QString year, QString major, QString  courseName);  //  학생 조회 함수
     bool matchesStudent(Student* student, int studentID, const QString& name, const QString& year, const QString& major, const QString& courseName);// 입력 받은 학생 정보가 학생 객체에 존재하면 true
-    void addStudentsToCourseTable(Student* student, const QString& courseName, int& row);
+    void addStudentsToCourseTable(Student* student, const QString& courseName, int row);
     void clearAllStudents();  // 프로그램 종료 전 모든 객체 delete 함수
     void saveStudentsBeforeClose();  // 프로그램 종료 전 DB에 학생 정보 저장 함수
     void showMessegeAndClear(const QString& title, const QString& message, const QString& target);  // 성공 or 실패 메시지 출력 and 입력 필드 Clear 하는 함수
@@ -72,9 +72,6 @@ public slots:
     void on_courseGradePushButton_clicked();  //  수강 과목 학점 등록 버튼
     void onMajorChanged(const QString &major);  //  전공에 따른 수강 과목을 콤보박스에 출력하는 함수
     void onTabChanged(int index);  // 탭 변경 시 호출되는 함수
-
-private slots:
-    void on_MainWindow_iconSizeChanged(const QSize &iconSize);
 };
 
 #endif // MAINWINDOW_H

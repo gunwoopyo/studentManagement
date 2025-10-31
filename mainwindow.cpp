@@ -7,12 +7,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
     connect(ui->searchTable, &QTableWidget::cellDoubleClicked, this, &MainWindow::onSearchTableDoubleClicked); // searchTable 에서 특정 행 더블 클릭 시 courseTable로 넘어가 학생 정보 출력
     connect(ui->courseMajorComboBox, &QComboBox::currentTextChanged,this, &MainWindow::onMajorChanged); // 수강 과목 페이지에서 전공 바꿀 시 수강 과목 변경 함수
     onMajorChanged(ui->courseMajorComboBox->currentText());
+
 
     connect(ui->searchStudentIDText, &QLineEdit::editingFinished, this, &MainWindow::on_searchStudentIDTextEntered);  // 학생 등록 페이지 - 학번 입력 시 유효성 검사 함수
     connect(ui->searchStudentNameText, &QLineEdit::editingFinished, this, &MainWindow::on_searchNameTextEntered); // 학생 등록 페이지 - 이름 입력 시 유효성 검사 함수
@@ -30,8 +33,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->searchStudentNameText->setPlaceholderText("한글 입력(최대 5자리)");
     ui->courseStudentIDText->setPlaceholderText("숫자 입력(최대 4자리)");
     ui->courseStudentNameText->setPlaceholderText("한글 입력(최대 5자리)");
-    // ui->searchTable->verticalHeader()->setVisible(false);
-    // ui->courseTable->verticalHeader()->setVisible(false);
+
+    ui->searchTable->verticalHeader()->setFixedWidth(13);
+    ui->courseTable->verticalHeader()->setFixedWidth(13);
 
 }
 
@@ -68,10 +72,10 @@ void MainWindow::showMessegeAndClear(const QString& title, const QString& messag
         messageBox.setIcon(QMessageBox::Warning);
     }
 
-    QRect mainWindowGeometry  = this->frameGeometry();
-    QPoint mainWindowCenter  = mainWindowGeometry.center();
-    QSize messageBoxSize = messageBox.sizeHint();
-    QPoint messageBoxPosition = mainWindowCenter - QPoint(messageBoxSize.width()/2, messageBoxSize.height()/2);
+    QRect mainWindowGeometry  = this->frameGeometry();  // 메인윈도우 전체 크기와 위치 반환
+    QPoint mainWindowCenter  = mainWindowGeometry.center();  // 가운데 위치
+    QSize messageBoxSize = messageBox.sizeHint();  // 메시지 박스 크기
+    QPoint messageBoxPosition = mainWindowCenter - QPoint(messageBoxSize.width()/2,  messageBoxSize.height()/2); // 메시지 박스 배치
 
     messageBox.move(messageBoxPosition);
     messageBox.exec();
@@ -90,11 +94,7 @@ void MainWindow::onTabChanged(int index) {
 }
 
 
-
-
 void MainWindow::on_clearStudentFieldPushButton_clicked() {
-#include <QMessageBox>
-#include "mainwindow.h"
     showMessegeAndClear("성공", "입력 초기화 완료  ", "clearStudentField");
     return;
 }
@@ -118,6 +118,7 @@ void MainWindow::on_searchStudentIDTextEntered() {
         ui->searchStudentIDText->setFocus();
     }
 }
+
 void MainWindow::on_courseStudentIDTextEntered() {
     bool isNum;
     ui->courseStudentIDText->text().trimmed().toInt(&isNum);
@@ -228,18 +229,18 @@ void MainWindow::on_searchDescPushButton_clicked() {
 }
 
 void MainWindow::bubbleSort(QTableWidget* table, int column, bool ascending) {
-    int rowCount = table->rowCount();
-    int columnCount = table->columnCount();
 
-    for (int i = 0; i < rowCount - 1; i++) {
-        for (int row = 0;  row < rowCount - i - 1;  row++) {
+
+
+    for (int i = 0; i < table->rowCount() - 1; i++) {
+        for (int row = 0;  row < table->rowCount() - i - 1;  row++) {  // i는 1씩 증가하니 반복횟수 1씩 줄어듦.
             QTableWidgetItem* currentRowItem = table->item(row, column);
             QTableWidgetItem* nextRowItem = table->item(row + 1, column);
 
             bool currentIsNum, nextIsNum; // 숫자로 변환 가능하면 true,
 
-            // double로 변환 성공 : currentIsNum -> true, currentRowData에 저장.
-            // double로 변환 실패 : currentIsNum -> false, 0 저장.
+            // double로 변환 성공 : currentIsNum->true, currentRowData에 숫자 저장.
+            // double로 변환 실패 : currentIsNum->false, 0 저장.
             double currentRowData = currentRowItem->text().toDouble(&currentIsNum);
             double nextRowData = nextRowItem->text().toDouble(&nextIsNum);
 
@@ -250,10 +251,10 @@ void MainWindow::bubbleSort(QTableWidget* table, int column, bool ascending) {
 
             // setItem(행 번호, 열 번호, 뽑을 데이터)
             // swap
-            for (int col = 0; col < columnCount; col++) {
-                QTableWidgetItem* tmp = table->takeItem(row, col);
-                table->setItem(row, col, table->takeItem(row + 1, col));
-                table->setItem(row + 1, col, tmp);
+            for (int column = 0; column < table->columnCount(); column++) {
+                QTableWidgetItem* tmp = table->takeItem(row, column);
+                table->setItem(row, column, table->takeItem(row + 1, column));
+                table->setItem(row + 1, column, tmp);
             }
 
         }
@@ -280,7 +281,7 @@ void MainWindow::on_searchStudentPushButton_clicked() {
     }
     searchStudent(studentID, name, year, major);
     ui->searchTable->rowCount() > 0   ?   showMessegeAndClear("성공", "학생 정보 조회 완료!  ", "clearStudentField")
-                                    :   showMessegeAndClear("실패", "존재하는 학생 정보가 없습니다  ", "clearStudentField");
+                                      :   showMessegeAndClear("실패", "존재하는 학생 정보가 없습니다  ", "clearStudentField");
 }
 
 void MainWindow:: on_searchAllStudentButton_clicked() {
@@ -310,6 +311,7 @@ void MainWindow::searchStudent(int studentID, QString name, QString year, QStrin
     while (currentStudent != nullptr) {
         bool studentFounded = true;
 
+        // 입력 칸 비어있지 않고, 일치하는 학생 정보 있으면 true 그대로 유지
         if (studentID != 0 && currentStudent->getStudentID() != studentID)
             studentFounded = false;
 
@@ -325,7 +327,7 @@ void MainWindow::searchStudent(int studentID, QString name, QString year, QStrin
         // 만약 major 콤보박스로만 학생 조회를 했다면 나머지 변수는 empty 이므로 통과.
         // 반복문을 통해 입력한 전공을 가진 학생의 전공과 같으면 match는 true. 객체 정보를 테이블로 출력.
         if (studentFounded == true) {
-            insertStudentTableRow(currentStudent, row);
+            insertStudentTableRow(currentStudent, row);  // 행 삽입
             row++;
         }
         currentStudent = currentStudent->studentNext;
@@ -340,6 +342,7 @@ void MainWindow::insertStudentTableRow(Student* student, int row) {
     ui->searchTable->setItem(row, column++, new QTableWidgetItem(student->getName()));
     ui->searchTable->setItem(row, column++, new QTableWidgetItem(student->getYear()));
     ui->searchTable->setItem(row, column++, new QTableWidgetItem(student->getMajor()));
+
     if(student->getGPA() == 0.0) {
         ui->searchTable->setItem(row, column++, new QTableWidgetItem("학점 미입력"));
     }
@@ -405,6 +408,7 @@ void MainWindow::setCourseInfo(int& studentID, QString& name, QString& year, QSt
     courseName = ui->courseCourseNameComboBox->currentText();
 }
 
+
 void MainWindow::on_courseSearchPushButton_clicked() {
     int studentID;
     QString name, year, major, courseName;
@@ -414,7 +418,6 @@ void MainWindow::on_courseSearchPushButton_clicked() {
         showMessegeAndClear("실패", "학생 정보를 입력해주세요  ", "clearCourseField");
         return;
     }
-
 
     searchStudent(studentID, name, year, major, courseName);
     ui->courseTable->rowCount() > 0 ?  showMessegeAndClear("성공", "학생 정보 조회 완료!  ", "clearCourseField")
@@ -447,11 +450,12 @@ bool MainWindow::matchesStudent(Student* student, int studentID, const QString& 
         return false;
     }
 
+
     return true;
 }
 
 
-void MainWindow::addStudentsToCourseTable(Student* student, const QString& courseName, int& row) {
+void MainWindow::addStudentsToCourseTable(Student* student, const QString& courseName, int row) {
     Course* currentCourse = student->courseList;
     // 수강 과목이 없는 경우
     if (currentCourse == nullptr) {
@@ -460,15 +464,15 @@ void MainWindow::addStudentsToCourseTable(Student* student, const QString& cours
         ui->courseTable->setItem(row, 1, new QTableWidgetItem(student->getName()));
         ui->courseTable->setItem(row, 2, new QTableWidgetItem(student->getYear()));
         ui->courseTable->setItem(row, 3, new QTableWidgetItem(student->getMajor()));
-        row++;
         return;
     }
-
+    // 수강하는 과목이 존재하는 경우
     while(currentCourse != nullptr) {
-        if(!courseName.isEmpty() && currentCourse->getCourseName() != courseName) {
+        if(!courseName.isEmpty()  &&  currentCourse->getCourseName() != courseName) {
             currentCourse = currentCourse->courseNext;
             continue;
         }
+        // 입력한 학생정보가 일치할 때만 테이블에 출력
         ui->courseTable->insertRow(row);
         ui->courseTable->setItem(row, 0, new QTableWidgetItem(QString::number(student->getStudentID())));
         ui->courseTable->setItem(row, 1, new QTableWidgetItem(student->getName()));
@@ -476,13 +480,12 @@ void MainWindow::addStudentsToCourseTable(Student* student, const QString& cours
         ui->courseTable->setItem(row, 3, new QTableWidgetItem(student->getMajor()));
         ui->courseTable->setItem(row, 4, new QTableWidgetItem(currentCourse->getCourseName()));
 
-        if(!currentCourse->getGrade().isEmpty())
+        if(!currentCourse->getGrade().isEmpty()) {
             ui->courseTable->setItem(row, 5, new QTableWidgetItem(currentCourse->getGrade()));
+        }
 
-        row++;
         currentCourse = currentCourse->courseNext;
     }
-
 }
 
 
@@ -491,10 +494,10 @@ void MainWindow::searchStudent(int studentID, QString name, QString year, QStrin
     ui->courseTable->setRowCount(0);   // 행 개수 0으로 설정 --> all 데이터 삭제
     int row = 0;
     Student* currentStudent = Management::manageHead;
-
     while (currentStudent != nullptr) {
-        if (matchesStudent(currentStudent, studentID, name, year, major, courseName) == true) {
+        if (matchesStudent(currentStudent, studentID, name, year, major, courseName) == true) {  // 일치하는 학생 정보가 있으면 true
             addStudentsToCourseTable(currentStudent, courseName, row);
+            row++;
         }
         currentStudent = currentStudent->studentNext;
     }
@@ -517,6 +520,7 @@ void MainWindow::studentTable(Student* student) {
         ui->searchTable->setItem(row, column++, new QTableWidgetItem(currentStudent->getName()));
         ui->searchTable->setItem(row, column++, new QTableWidgetItem(currentStudent->getYear()));
         ui->searchTable->setItem(row, column++, new QTableWidgetItem(currentStudent->getMajor()));
+
         if(currentStudent->getGPA() == 0) {
             ui->searchTable->setItem(row, column++, new QTableWidgetItem("학점 미입력"));
         }
@@ -541,10 +545,10 @@ void MainWindow::studentTable(Student* student) {
 
 // courseTable() 호출 --> null
 // courseTable(something) 호출 --> not null
-void MainWindow::courseTable(Student* singleStduent) {
+void MainWindow::courseTable(Student* student) {
     int row = 0;
     ui->courseTable->setRowCount(0);
-    Student* currentStudent = singleStduent   ?   singleStduent   :   Management::manageHead;   // 삼항 연산자로 head인지 판단.
+    Student* currentStudent = student    ?   student   :   Management::manageHead;   // 삼항 연산자로 head인지 판단.
 
     while(currentStudent != nullptr) {
         Course* currentCourse = currentStudent->courseList;
@@ -573,8 +577,8 @@ void MainWindow::courseTable(Student* singleStduent) {
             }
         }
 
-        //  학생 혼자면 while문 돌지 않고 break로 반복문 탈출
-        if(singleStduent != nullptr) {
+        // 학생 혼자면 while문 돌지 않고 break로 반복문 탈출
+        if(student != nullptr) {
             break;
         }
 
@@ -606,9 +610,12 @@ void MainWindow::on_courseAddPushButton_clicked() {
 }
 
 
+
+
 void MainWindow::on_courseAllSearchPushButton_clicked() {
     if(Management::manageHead == nullptr) {
         showMessegeAndClear("실패", "존재하는 학생 정보가 없습니다  ", "clearCourseField");
+        ui->courseTable->setRowCount(0);
         return;
     }
     courseTable();
@@ -629,7 +636,7 @@ void MainWindow::on_courseTable_cellClicked(int clickedRow) {
     ui->courseYearComboBox->setCurrentText(student->getYear());
     ui->courseMajorComboBox->setCurrentText(student->getMajor());
 
-    // 선택한 행에서 수강 과목이 존재할 경우 -->  과목 이름 변수에 저장.
+    // 선택한 행에서 수강 과목이 존재할 경우 --> 과목 이름 변수에 저장.
     int courseNameIndex = 4;
     QTableWidgetItem* courseName = ui->courseTable->item(clickedRow, courseNameIndex);
     if(courseName != nullptr) {
@@ -659,7 +666,7 @@ void MainWindow::on_deleteCoursePushButton_clicked() {
     Student* student = manager->createObject(courseTableStudentID);
     manager->deleteCourse(student, courseTableCourseName);
     manager->deleteCourseDB(courseTableStudentID, courseTableCourseName);
-    student->SetGPA(student->calculateGPA());
+    student->setGPA(student->calculateGPA());
     courseTable(student);
     showMessegeAndClear("성공","과목 삭제 완료  ", "clearCourseField");
 }
@@ -682,18 +689,19 @@ void MainWindow::on_courseGradePushButton_clicked() {
         return;
     }
     manager->updateGrade(student, courseTableCourseName, grade);
-    student->SetGPA(student->calculateGPA());
+    student->setGPA(student->calculateGPA());
     courseTable(student);
     showMessegeAndClear("성공", "성적 등록 성공!  ", "clearCourseField");
 }
 
 
 void MainWindow::applyCourseTableRowColors(QTableWidget* courseTable) {
-    int studentIDColumn = 0;
-    int prevStudentID = 0;
-    QColor currentColor = QColor("#ffffff");
 
-    for (int row = 0; row < courseTable->rowCount(); row++) {  // 행 간 학번이 같으면 똑같은 색. 다르면 다른색.
+    QColor currentColor = QColor("#ffffff");
+    int prevStudentID = 0;
+
+    for (int row = 0;  row < courseTable->rowCount();  row++) {  // 행 간 학번이 같으면 똑같은 색. 다르면 다른색.
+        int studentIDColumn = 0;
         int studentID = courseTable->item(row, studentIDColumn)->text().toInt();
 
         if (prevStudentID != studentID) {  // 이전 학번과 행의 학번이 다르면 색 변경.
@@ -796,8 +804,5 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
-void MainWindow::on_MainWindow_iconSizeChanged(const QSize &iconSize)
-{
 
-}
 
